@@ -1,0 +1,26 @@
+{
+    "name": "vcl-extension",
+    "displayName": "vcl_extension",
+    "description": "A VCL extension to support Curtis VCL (Vehicle Control Language) work",
+    "publisher": "0",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.35.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "vcl",
+            "aliases": ["vcl", "vcl"],
+            "extensions": [".vcl"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "vcl",
+            "scopeName": "source.vcl",
+            "path": "./syntaxes/vcl.tmLanguage.json"
+        }]
+    }
+}
