@@ -20,10 +20,17 @@
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
+			"patterns": [
+				{
 				"name": "keyword.control.vcl",
-				"match": "\\b(if|while|return|ret)\\b"
-			}]
+				"match": "\\b(?i)(if|while|return|ret)\\b"
+				},
+				{
+					"name": "keyword.operator.vcl",
+					"match": "\b(?i_)(<|>|=|!|*|/|+|-|<<|>>|&|^|\\|)\b"
+				}
+
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.vcl",
@@ -47,16 +54,17 @@
 			"patterns": [
 				{
 					"name": "constant.character",
-					"match": "(<|>|=|!|*|/|+|-|<<|>>|&|^|\|)"
-				},
-				{
-					"name": "constant.language",
-					"match": "()"
+					"match": ""
 				}
 			]
 		},
 		"variables": {
-			
+			"patterns": [
+				{
+					"name": "variable.language",
+					"match": ""
+				}
+			]
 		}
 	},
 	"scopeName": "source.vcl"

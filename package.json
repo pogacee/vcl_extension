@@ -18,7 +18,7 @@
         }],
         "grammars": [{
             "language": "vcl",
-            "scopeName": "sourcy.vcl",
+            "scopeName": "source.vcl",
             "path": "./syntaxes/vcl.tmLanguage.json"
         }]
     }
