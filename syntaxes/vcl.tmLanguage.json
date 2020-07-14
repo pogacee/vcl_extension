@@ -7,6 +7,15 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#variables"
 		}
 	],
 	"repository": {
@@ -26,6 +35,28 @@
 					"match": "\\\\."
 				}
 			]
+		},
+		"comments": {
+			"patterns":[{
+				"name": "comment.line.vcl",
+				"begin": ";",
+				"end": "\n"
+			}]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.character",
+					"match": "(<|>|=|!|*|/|+|-|<<|>>|&|^|\|)"
+				},
+				{
+					"name": "constant.language",
+					"match": "()"
+				}
+			]
+		},
+		"variables": {
+			
 		}
 	},
 	"scopeName": "source.vcl"
