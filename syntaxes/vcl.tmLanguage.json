@@ -3,69 +3,82 @@
 	"name": "VCL",
 	"patterns": [
 		{
+			"include": "#comments"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
 			"include": "#strings"
 		},
 		{
-			"include": "#comments"
-		},
-		{
-			"include": "#constants"
-		},
-		{
-			"include": "#variables"
+			"include": "#functions"
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.vcl",
+					"match": "(;.*?$)"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [
 				{
-				"name": "keyword.control.vcl",
-				"match": "\\b(?i)(if|while|return|ret)\\b"
-				},
-				{
-					"name": "keyword.operator.vcl",
-					"match": "\b(?i_)(<|>|=|!|*|/|+|-|<<|>>|&|^|\\|)\b"
+					"name": "keyword.control.vcl",
+					"match": "\\b(?i)(if|else|while|begin_module|end_module|enter)\\b"
 				}
-
 			]
 		},
 		"strings": {
-			"name": "string.quoted.double.vcl",
-			"begin": "\"",
-			"end": "\"",
 			"patterns": [
 				{
-					"name": "constant.character.escape.vcl",
-					"match": "\\\\."
+					"name": "string.quoted.vcl",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.vcl",
+							"match": "\\."
+						}
+					]
 				}
 			]
 		},
-		"comments": {
-			"patterns":[{
-				"name": "comment.line.vcl",
-				"begin": ";",
-				"end": "\n"
-			}]
-		},
-		"constants": {
+		"functions": {
+			"name": "support.function.vcl",
+			"begin": "\\s*([A-Za-z_$][\\w$]*)\\s*(\\()",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.separator.period.vcl"
+				},
+				"2": {
+					"name": "entity.name.function.vcl"
+				},
+				"3": {
+					"name": "punctuation.definition.parameters.begin.bracket.round.vcl"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.parameters.end.bracket.round.vcl"
+				}
+			},
 			"patterns": [
 				{
-					"name": "constant.character",
-					"match": ""
-				}
-			]
-		},
-		"variables": {
-			"patterns": [
+					"include": "#strings"
+				},
 				{
-					"name": "variable.language",
-					"match": ""
+					"include": "#keywords"
 				}
+				
 			]
 		}
+
+
 	},
 	"scopeName": "source.vcl"
 }
