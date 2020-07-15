@@ -13,6 +13,9 @@
 		},
 		{
 			"include": "#functions"
+		},
+		{
+			"include": "#variables"
 		}
 	],
 	"repository": {
@@ -28,7 +31,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.vcl",
-					"match": "\\b(?i)(if|else|while|begin_module|end_module|enter)\\b"
+					"match": "\\b(?i)(if|else|else if|while|begin_module|end_module|enter)\\b"
 				}
 			]
 		},
@@ -49,34 +52,15 @@
 		},
 		"functions": {
 			"name": "support.function.vcl",
-			"begin": "\\s*([A-Za-z_$][\\w$]*)\\s*(\\()",
-			"beginCaptures": {
-				"1": {
-					"name": "punctuation.separator.period.vcl"
-				},
-				"2": {
-					"name": "entity.name.function.vcl"
-				},
-				"3": {
-					"name": "punctuation.definition.parameters.begin.bracket.round.vcl"
-				}
-			},
-			"end": "\\)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.parameters.end.bracket.round.vcl"
-				}
-			},
+			"match": "\\s*([A-Za-z_$][\\w$]*)\\s*(?=(\\())",
 			"patterns": [
 				{
 					"include": "#strings"
-				},
-				{
-					"include": "#keywords"
 				}
 				
 			]
 		}
+		
 
 
 	},
