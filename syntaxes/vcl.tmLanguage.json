@@ -6,16 +6,22 @@
 			"include": "#comments"
 		},
 		{
+			"include": "#functions"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
 			"include": "#strings"
 		},
 		{
-			"include": "#functions"
+			"include": "#variables"
 		},
 		{
-			"include": "#variables"
+			"include": "#numbers"
+		},
+		{
+			"include": "#constants"
 		}
 	],
 	"repository": {
@@ -51,13 +57,41 @@
 			]
 		},
 		"functions": {
-			"name": "support.function.vcl",
-			"match": "\\s*([A-Za-z_$][\\w$]*)\\s*(?=(\\())",
+			"patterns":[
+				{
+					"name": "support.function.vcl",
+					"match": "(?i)(\\s*(?!if|else if|while)([A-Za-z_$][\\w$]*)\\s*(?=(\\()))",
+					"patterns": [
+						{
+							"include": "#strings"
+						}
+				
+					]
+				}
+			]			
+		},
+		"numbers": {
 			"patterns": [
 				{
-					"include": "#strings"
+					"match": "(?x)\n\\b(?<!\\$)\n0(x|X)\n(\n  (?<!\\.)[0-9a-fA-F]([0-9a-fA-F_]*[0-9a-fA-F])?[Ll]?(?!\\.)\n  |\n  (\n    [0-9a-fA-F]([0-9a-fA-F_]*[0-9a-fA-F])?\\.?\n    |\n    ([0-9a-fA-F]([0-9a-fA-F_]*[0-9a-fA-F])?)?\\.[0-9a-fA-F]([0-9a-fA-F_]*[0-9a-fA-F])?\n  )\n  [Pp][+-]?[0-9]([0-9_]*[0-9])?[FfDd]?\n)\n\\b(?!\\$)",
+					"name": "constant.numeric.hex.vcl"
+				},
+				{
+					"match": "\\b(?<!\\$)0(b|B)[01]([01_]*[01])?[Ll]?\\b(?!\\$)",
+					"name": "constant.numeric.binary.vcl"
+				},
+				{
+					"match": "(?x)\n(?<!\\$)\n(\n  \\b[0-9]([0-9_]*[0-9])?\\.\\B(?!\\.)\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([Ee][+-]?[0-9]([0-9_]*[0-9])?)[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([0-9]([0-9_]*[0-9])?)([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]?\\b\n  |\n  (?<!\\.)\\B\\.[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]\\b\n  |\n  \\b(0|[1-9]([0-9_]*[0-9])?)(?!\\.)[Ll]?\\b\n)\n(?!\\$)",
+					"name": "constant.numeric.decimal.vcl"
 				}
-				
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"match": "\\b(?i)(on|off)\\b",
+					"name": "constant.language.vcl"
+				}
 			]
 		}
 		
