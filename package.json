@@ -4,6 +4,7 @@
     "description": "An extension to highlight VCL Syntax",
     "version": "0.5.2",
     "publisher": "leeh",
+    "repository": "https://github.com/hnrlee/vcl_extension",
     "engines": {
         "vscode": "^1.47.0"
     },
