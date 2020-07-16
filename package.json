@@ -2,7 +2,7 @@
     "name": "vcl-extension",
     "displayName": "vcl_extension",
     "description": "An extension to highlight VCL Syntax",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "publisher": "leeh",
     "engines": {
         "vscode": "^1.47.0"
@@ -22,7 +22,6 @@
             "scopeName": "source.vcl",
             "path": "./syntaxes/vcl.tmLanguage.json"
         }],
-        
         "colors": [
             {
                 "id": "curtis.blue",
