@@ -14,13 +14,34 @@
         "languages": [{
             "id": "vcl",
             "aliases": ["VCL", "vcl"],
-            "extensions": [".vcl"],
+            "extensions": [".vcl",".VCL"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
             "language": "vcl",
             "scopeName": "source.vcl",
             "path": "./syntaxes/vcl.tmLanguage.json"
-        }]
+        }],
+        
+        "colors": [
+            {
+                "id": "curtis.blue",
+                "description": "Curtis Instruments Logo Blue Color",
+                "defaults": {
+                    "dark": "#0779bf",
+                    "light": "#0779bf",
+                    "highContrast": "#0779bf"
+                }
+            },
+            {
+                "id": "curtis.green",
+                "description": "Curtis Instruments Logo Green Color",
+                "defaults": {
+                    "dark": "#02b093",
+                    "light": "#02b093",
+                    "highContrast": "#02b093"
+                }
+            }
+        ]
     }
 }

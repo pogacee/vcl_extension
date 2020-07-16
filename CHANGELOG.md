@@ -4,6 +4,6 @@ All notable changes to the "vcl-extension" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [0.5.1]
 
-- Initial release
+- Initial testing release
