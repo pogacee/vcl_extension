@@ -22,6 +22,9 @@
 		},
 		{
 			"include": "#constants"
+		},
+		{
+			"include": "#subroutines"
 		}
 	],
 	"repository": {
@@ -37,7 +40,35 @@
 			"patterns": [
 				{
 					"name": "keyword.control.vcl",
-					"match": "\\b(?i)(if|else|else if|while|begin_module|end_module|enter)\\b"
+					"match": "\\b(?i)(call|if|else|else if|while|begin_module|end_module|enter)\\b"
+				},
+				{
+					"name": "keyword.other",
+					"match": "\\b(?i)(call)\\b"
+				},
+				{
+					"match": "(===?|!=|<=|>=|<>|<|>)",
+					"name": "keyword.operator.comparison.vcl"
+				},
+				{
+					"match": "(\\-|\\+|\\*|\\/|%)",
+					"name": "keyword.operator.arithmetic.vcl"
+				},
+				{
+					"match": "(!|&&|\\|\\|)",
+					"name": "keyword.operator.logical.vcl"
+				},
+				{
+					"match": "(<<|>>>?|~|\\^)",
+					"name": "keyword.operator.bitwise.vcl"
+				},
+				{
+					"match": "(\\||&)",
+					"name": "keyword.operator.bitwise.vcl"
+				},
+				{
+					"match": "\\b(?i)(goto|return|equals|bit)\\b",
+					"name": "keyword.reserved.vcl"
 				}
 			]
 		},
@@ -59,11 +90,37 @@
 		"functions": {
 			"patterns":[
 				{
-					"name": "support.function.vcl",
-					"match": "(?i)(\\s*(?!if|else if|while)([A-Za-z_$][\\w$]*)\\s*(?=(\\()))",
+					"name": "meta.function-call.vcl",
+					"begin": "(\\s*(?!(?i)if|else if|while)([A-Za-z_$][\\w$]*)\\s*(?=(\\()))",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.separator.period.vcl"
+						},
+						"2": {
+							"name": "entity.name.function.vcl"
+						},
+						"3": {
+							"name": "punctuation.definition.parameters.begin.bracket.round.vcl"
+						}
+					},
+					"end": "(\\))",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.parameters.end.bracket.round.java"
+						}
+					},
 					"patterns": [
 						{
 							"include": "#strings"
+						},
+						{
+							"include": "#numbers"
+						},
+						{
+							"include": "#keywords"
+						},
+						{
+							"include": "#variables"
 						}
 				
 					]
@@ -83,6 +140,9 @@
 				{
 					"match": "(?x)\n(?<!\\$)\n(\n  \\b[0-9]([0-9_]*[0-9])?\\.\\B(?!\\.)\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([Ee][+-]?[0-9]([0-9_]*[0-9])?)[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([0-9]([0-9_]*[0-9])?)([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]?\\b\n  |\n  (?<!\\.)\\B\\.[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]\\b\n  |\n  \\b(0|[1-9]([0-9_]*[0-9])?)(?!\\.)[Ll]?\\b\n)\n(?!\\$)",
 					"name": "constant.numeric.decimal.vcl"
+				},
+				{
+
 				}
 			]
 		},
@@ -91,6 +151,47 @@
 				{
 					"match": "\\b(?i)(on|off)\\b",
 					"name": "constant.language.vcl"
+				}
+			]
+		},
+		"subroutines": {
+			"patterns": [
+				{
+					"name": "support.function.vcl",
+					"match": "\\w*\\:"
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.parameter.user.vcl",
+					"match": "(?i)(p_user100|p_user\\d\\d|p_user\\d)(?!=>\\d)\\b"
+				},
+				{
+					"name": "variable.name.user.vcl",
+					"match": "(?i)(user100|user\\d\\d|user\\d)(?!=>\\d)\\b"
+				},
+				{
+					"name": "variable.bitparameter.user.vcl",
+					"match": "(?i)(p_user_bit100|p_user_bit\\d\\d|p_user_bit\\d)(?!=>\\d)\\b"
+				},
+				{
+					"name": "variable.bitname.user.vcl",
+					"match": "(?i)(user_bit100|user_bit\\d\\d|user_bit\\d)(?!=>\\d)\\b"
+				},
+				{
+					"name": "variable.other.switch.vcl",
+					"match": "(?i)(sw_\\d\\d|sw_\\d)(?!=>\\d)\\b"
+				},
+				{
+					"name": "variable.other.pwm.vcl",
+					"match": "(?i)(pwm\\d\\d|pwm\\d)(?!=>\\d)\\b"
+				},
+				
+				{
+					"name": "variable.other.delay.vcl",
+					"match": "(?i)(dly10|dly11|dly12|dly13|dly14|dly15|dly16|dly\\d)(?!=>\\d)\\b"
 				}
 			]
 		}
