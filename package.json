@@ -2,7 +2,8 @@
     "name": "vcl-extension",
     "displayName": "vcl_extension",
     "description": "An extension to highlight VCL Syntax",
-    "version": "0.0.1",
+    "version": "0.5.1",
+    "publisher": "leeh",
     "engines": {
         "vscode": "^1.47.0"
     },
