@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "keyword.other",
-					"match": "\\b(?i)(call)\\b"
+					"match": "\\b(?i)(call|constant|variable|create)\\b"
 				},
 				{
 					"match": "(===?|!=|<=|>=|<>|<|>)",
@@ -140,9 +140,6 @@
 				{
 					"match": "(?x)\n(?<!\\$)\n(\n  \\b[0-9]([0-9_]*[0-9])?\\.\\B(?!\\.)\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([Ee][+-]?[0-9]([0-9_]*[0-9])?)[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?\\.([0-9]([0-9_]*[0-9])?)([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]?\\b\n  |\n  (?<!\\.)\\B\\.[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)[FfDd]?\\b\n  |\n  \\b[0-9]([0-9_]*[0-9])?([Ee][+-]?[0-9]([0-9_]*[0-9])?)?[FfDd]\\b\n  |\n  \\b(0|[1-9]([0-9_]*[0-9])?)(?!\\.)[Ll]?\\b\n)\n(?!\\$)",
 					"name": "constant.numeric.decimal.vcl"
-				},
-				{
-
 				}
 			]
 		},
@@ -151,6 +148,10 @@
 				{
 					"match": "\\b(?i)(on|off)\\b",
 					"name": "constant.language.vcl"
+				},
+				{
+					"name": "constant.language.vcl",
+					"match": "(?i)(PSM_)(DECIMAL|DECIMAL_[0-3]|BINARY|HEX|TEX_ONLY)\\b"
 				}
 			]
 		},
@@ -166,33 +167,105 @@
 			"patterns": [
 				{
 					"name": "variable.parameter.user.vcl",
-					"match": "(?i)(p_user100|p_user\\d\\d|p_user\\d)(?!=>\\d)\\b"
+					"match": "(?i)(p_user100|p_user[1-9][0-9]|p_user[1-9])\\b"
 				},
 				{
 					"name": "variable.name.user.vcl",
-					"match": "(?i)(user100|user\\d\\d|user\\d)(?!=>\\d)\\b"
+					"match": "(?i)(user100|user[1-9][0-9]|user[1-9])\\b"
 				},
 				{
 					"name": "variable.bitparameter.user.vcl",
-					"match": "(?i)(p_user_bit100|p_user_bit\\d\\d|p_user_bit\\d)(?!=>\\d)\\b"
+					"match": "(?i)(p_user_bit100|p_user_bit[1-9][0-9]|p_user_bit[1-9])\\b"
 				},
 				{
 					"name": "variable.bitname.user.vcl",
-					"match": "(?i)(user_bit100|user_bit\\d\\d|user_bit\\d)(?!=>\\d)\\b"
+					"match": "(?i)(user_bit100|user_bit[1-9][0-9]|user_bit[1-9])\\b"
 				},
 				{
 					"name": "variable.other.switch.vcl",
-					"match": "(?i)(sw_\\d\\d|sw_\\d)(?!=>\\d)\\b"
+					"match": "(?i)(sw_[1-9][0-9]|sw_[1-9])\\b"
 				},
 				{
 					"name": "variable.other.pwm.vcl",
-					"match": "(?i)(pwm\\d\\d|pwm\\d)(?!=>\\d)\\b"
+					"match": "(?i)(pwm[1-9][0-9]|pwm[1-9])\\b"
 				},
-				
 				{
 					"name": "variable.other.delay.vcl",
-					"match": "(?i)(dly10|dly11|dly12|dly13|dly14|dly15|dly16|dly\\d)(?!=>\\d)\\b"
+					"match": "(?i)(dly1[0-6]|dly[1-9])\\b"
+				},
+				{
+					"name": "variable.other.timer.vcl",
+					"match": "(?i)(tmr[1-3])(|_ms_output|_sec_output|_hr_output|_enable)\\b"
+				},
+				{
+					"name": "variable.other.abs.vcl",
+					"match": "(?i)(abs1[1-2])(|_output)\\b"
+				},
+				{
+					"name": "variable.other.mtd.vcl",
+					"match": "(?i)(mtd[1-4])(|_output)\\b"
+				},
+				{
+					"name": "variable.other.scl.vcl",
+					"match": "(?i)(scl[1-4])(|_output|_sf)\\b"
+				},
+				{
+					"name": "variable.other.copy.vcl",
+					"match": "(?i)(cpy[1-4])\\b"
+				},
+				{
+					"name": "variable.other.filter.vcl",
+					"match": "(?i)(flt[1-4])(|_output)\\b"
+				},
+				{
+					"name": "variable.other.limit.vcl",
+					"match": "(?i)(lim[1-4])(|_output|_limit)\\b"
+				},
+				{
+					"name": "variable.other.map.vcl",
+					"match": "(?i)(map[1-4])(|_output|_segment)\\b"
+				},
+				{
+					"name": "variable.other.ramp.vcl",
+					"match": "(?i)(rmp[1-4])(|_output|_hold)\\b"
+				},
+				{
+					"name": "variable.other.selectorswitch.vcl",
+					"match": "(?i)(sel[1-8])(|_output|_4p_n_output|_select|_4p_select)\\b"
+				},
+				{
+					"name": "variable.other.pid.vcl",
+					"match": "(?i)(pid[1-2])(|_output)\\b"
+				},
+				{
+					"name": "variable.other.nvm.vcl",
+					"match": "(?i)(nv)(m40|m[1-3][0-9]|m[1-9]|m_restore_source|m_result|m_status|user1[0-5]|user[1-9])\\b"
+				},
+				{
+					"name": "variable.other.nvmparameters.vcl",
+					"match": "(?i)(parameter_)(interlock_key|defaults_restore_source)\\b"
+				},
+				{
+					"name": "variable.other.sys.vcl",
+					"match": "(?i)(sys_restored_)(pfb|per|not)\\b"
+				},
+				{
+					"name": "variable.other.sys.extendedfaultlogging.vcl",
+					"match": "(?i)(extended_log_)(fault_code|time_stamp|value_[1-5]|map_length|[1-5]_map_object_ID|write_index|read_index)\\b"
+				},
+				{
+					"name": "variable.other.vclinterpreter.vcl",
+					"match": "(?i)(user120|user1[0-1][0-9]|user[1-9][0-9]|user[1-9]|user_bit10|user_bit[1-9]|p_user100|p_user[1-9][0-9]|p_user[1-9]|p_user_bit10|p_user_bit[1-9]|vcl_app_ver|vcl_ipms|vcl_ipms_min)\\b"
+				},
+				{
+					"name": "variable.other.serial.vcl",
+					"match": "(?i)(BR)(9600|19200|38400|57600|115200)\\b"
+				},
+				{
+					"name": "variable.other.spyglass.vcl",
+					"match": "(?i)(protocol_)(tty|1|2)\\b"
 				}
+				
 			]
 		}
 		
