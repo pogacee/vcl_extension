@@ -40,14 +40,10 @@
 			"patterns": [
 				{
 					"name": "keyword.control.vcl",
-					"match": "\\b(?i)(call|if|else|else if|while|begin_module|end_module|enter)\\b"
+					"match": "\\b(?i)(call|if|else|else if|elseif|while|begin_module|end_module)\\b"
 				},
 				{
-					"name": "keyword.other",
-					"match": "\\b(?i)(call|constant|variable|create)\\b"
-				},
-				{
-					"match": "(===?|!=|<=|>=|<>|<|>)",
+					"match": "(\\=\\=|\\!\\=|\\<\\=|\\>\\=|\\<\\>|\\<|\\>)",
 					"name": "keyword.operator.comparison.vcl"
 				},
 				{
@@ -63,11 +59,11 @@
 					"name": "keyword.operator.bitwise.vcl"
 				},
 				{
-					"match": "(\\||&)",
+					"match": "(\\|\\||&&|&|\\|)",
 					"name": "keyword.operator.bitwise.vcl"
 				},
 				{
-					"match": "\\b(?i)(goto|return|equals|bit)\\b",
+					"match": "\\b(?i)(goto|return|equals|bit|exit|enter|constant|const|call|variable|create)\\b",
 					"name": "keyword.reserved.vcl"
 				}
 			]
@@ -121,6 +117,12 @@
 						},
 						{
 							"include": "#variables"
+						},
+						{
+							"include": "#constants"
+						},
+						{
+							"include": "#comments"
 						}
 				
 					]
@@ -146,12 +148,12 @@
 		"constants": {
 			"patterns": [
 				{
-					"match": "\\b(?i)(on|off)\\b",
+					"match": "\\b(?i)(on|off|INT_MAX)\\b",
 					"name": "constant.language.vcl"
 				},
 				{
-					"name": "constant.language.vcl",
-					"match": "(?i)(PSM_)(DECIMAL|DECIMAL_[0-3]|BINARY|HEX|TEX_ONLY)\\b"
+					"name": "constant.language.psm.vcl",
+					"match": "(?i)(PSM_)(DECIMAL|DECIMAL_[0-3]|BINARY|HEX|TEX_ONLY|)\\b"
 				},
 				{
 					"name": "constant.language.vclCAN.messageTypeSpecifier.vcl",
@@ -235,7 +237,7 @@
 				},
 				{
 					"name": "constant.language.abs.vcl",
-					"match": "(?i)(abs1[1-2])\\b"
+					"match": "(?i)(abs[1-2])\\b"
 				},
 				{
 					"name": "constant.language.mtd.vcl",
@@ -287,7 +289,7 @@
 				},
 				{
 					"name": "variable.other.abs.vcl",
-					"match": "(?i)(abs1[1-2])(_output)\\b"
+					"match": "(?i)(abs[1-2])(_output)\\b"
 				},
 				{
 					"name": "variable.other.mtd.vcl",
@@ -338,8 +340,12 @@
 					"match": "(?i)(extended_log_)(fault_code|time_stamp|value_[1-5]|map_length|[1-5]_map_object_ID|write_index|read_index)\\b"
 				},
 				{
-					"name": "variable.other.vclinterpreter.vcl",
-					"match": "(?i)(user120|user1[0-1][0-9]|user[1-9][0-9]|user[1-9]|user_bit10|user_bit[1-9]|p_user100|p_user[1-9][0-9]|p_user[1-9]|p_user_bit10|p_user_bit[1-9]|vcl_app_ver|vcl_ipms|vcl_ipms_min)\\b"
+					"name": "variable.other.vclinterpreter.userVariables.vcl",
+					"match": "(?i)(?<!p_)(user120|user1[0-1][0-9]|user[1-9][0-9]|user[1-9]|user_bit10|user_bit[1-9]|vcl_app_ver|vcl_ipms|vcl_ipms_min)\\b"
+				},
+				{
+					"name": "variable.other.vclinterpreter.persistentUserVariables.vcl",
+					"match": "(p_user100|p_user[1-9][0-9]|p_user[1-9]|p_user_bit10|p_user_bit[1-9])"
 				},
 				{
 					"name": "variable.other.spyglass.vcl",

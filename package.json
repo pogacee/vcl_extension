@@ -2,7 +2,7 @@
     "name": "vcl-extension",
     "displayName": "vcl_extension",
     "description": "An extension to highlight VCL Syntax",
-    "version": "0.5.2",
+    "version": "0.5.3",
     "publisher": "leeh",
     "repository": "https://github.com/hnrlee/vcl_extension",
     "engines": {
@@ -22,26 +22,6 @@
             "language": "vcl",
             "scopeName": "source.vcl",
             "path": "./syntaxes/vcl.tmLanguage.json"
-        }],
-        "colors": [
-            {
-                "id": "curtis.blue",
-                "description": "Curtis Instruments Logo Blue Color",
-                "defaults": {
-                    "dark": "#0779bf",
-                    "light": "#0779bf",
-                    "highContrast": "#0779bf"
-                }
-            },
-            {
-                "id": "curtis.green",
-                "description": "Curtis Instruments Logo Green Color",
-                "defaults": {
-                    "dark": "#02b093",
-                    "light": "#02b093",
-                    "highContrast": "#02b093"
-                }
-            }
-        ]
+        }]
     }
 }

@@ -12,3 +12,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Added CAN variables and constants from VCL Common Functions document
 - Hopefully from this point on it's only tweaking categories to change syntax highlight colors
+
+## [0.5.3]
+
+- Added categories to function line (comments inside function, etc)
+- Changed around a few constants/variables
