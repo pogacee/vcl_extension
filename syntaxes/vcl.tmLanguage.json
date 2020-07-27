@@ -273,11 +273,11 @@
 				},
 				{
 					"name": "variable.other.switch.vcl",
-					"match": "(?i)(sw_[1-9][0-9]|sw_[1-9])\\b"
+					"match": "(?i)(sw_[1-9][0-9]|sw_[1-9])(|_up|_down)\\b"
 				},
 				{
 					"name": "variable.other.pwm.vcl",
-					"match": "(?i)(pwm[1-9][0-9]|pwm[1-9])\\b"
+					"match": "(?i)(pwm\\d\\d|pwm\\d)(|_output)\\b"
 				},
 				{
 					"name": "variable.other.delay.vcl",
@@ -418,6 +418,14 @@
 				{
 					"name": "variable.langauge.vclCAN.CANRO.vcl",
 					"match": "(?i)(CANRO_ID|CANRO_length)\\b"
+				},
+				{
+					"name": "variable.language.digitalOut.vcl",
+					"match": "(?i)(digout\\d\\d|digout\\d)\\b"
+				},
+				{
+					"name": "variable.language.potentiometer.vcl",
+					"match": "(?i)(pot\\d\\d|pot\\d)(|_raw|_output)\\b"
 				}
 
 				
