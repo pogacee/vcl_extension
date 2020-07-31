@@ -9,7 +9,7 @@
         "vscode": "^1.47.0"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages","Snippets"
     ],
     "contributes": {
         "languages": [{
@@ -22,6 +22,12 @@
             "language": "vcl",
             "scopeName": "source.vcl",
             "path": "./syntaxes/vcl.tmLanguage.json"
-        }]
+        }],
+        "snippets": [
+            {
+                "language": "vcl",
+                "path": "./snippets.json"
+            }
+        ]
     }
 }
