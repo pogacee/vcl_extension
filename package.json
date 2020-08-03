@@ -5,6 +5,7 @@
     "version": "1.0.1",
     "publisher": "leeh",
     "repository": "https://github.com/hnrlee/vcl_extension",
+    "icon": "",
     "engines": {
         "vscode": "^1.47.0"
     },
