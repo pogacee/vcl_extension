@@ -2,7 +2,7 @@
     "name": "vcl-extension",
     "displayName": "vcl_extension",
     "description": "An extension to highlight VCL Syntax",
-    "version": "0.5.3",
+    "version": "1.0.0",
     "publisher": "leeh",
     "repository": "https://github.com/hnrlee/vcl_extension",
     "engines": {

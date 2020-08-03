@@ -17,3 +17,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Added categories to function line (comments inside function, etc)
 - Changed around a few constants/variables
+
+## [1.0.0]
+
+- Added Snippets
+    - See Readme for list of snippets (prefix and output)
+- First "Full Release"
