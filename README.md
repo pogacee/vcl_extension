@@ -16,7 +16,7 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-*There may be some issues with syntax highlighting colors
+* There may be some issues with syntax highlighting colors
 
 
 
