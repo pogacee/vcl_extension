@@ -23,3 +23,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Added Snippets
     - See Readme for list of snippets (prefix and output)
 - First "Full Release"
+
+## [1.0.1]
+
+- Small changes to snippets file to add some more prefixes that were not saved in the previous release

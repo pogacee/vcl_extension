@@ -5,7 +5,7 @@
         "description": "A delimiting comment line made of equals signs"
     },
     "Dash Comment Line": {
-        "prefix": ["dashl", "dashline", "hyphl", "hyphenl", "hyphenline"],
+        "prefix": ["dashl", "dashline", "hyphl", "hyphline", "hyphenl", "hyphenline"],
         "body": [";------------------------------------------------------------------------", "$0"],
         "description": "A delimiting comment line made of dashes/hyphens"
     },
@@ -15,7 +15,7 @@
         "description": "An enclosing pair of delimiting comment lines made of equals signs"
     },
     "Dash Comment Line Enclosure": {
-        "prefix": ["dashlencl", "dashlineencl", "hyphlencl", "hyphenlencl", "hyphenlineencl"],
+        "prefix": ["dashlencl", "dashlineencl", "hyphlencl", "hyphlineencl", "hyphenlencl", "hyphenlineencl"],
         "body": [";------------------------------------------------------------------------", ";\t$0", ";------------------------------------------------------------------------"],
         "description": "An enclosing pair of delimiting comment lines made of dashes/hyphens signs"
     },
@@ -35,17 +35,17 @@
         "description": "An else-if statement"
     },
     "Else Statement": {
-        "prefix": ["else"],
+        "prefix": ["else", "el"],
         "body": ["else {", "\t$0", "}"],
         "description": "An else statement"
     },
-    "If-Else Block": {
-        "prefix": ["ifelse"],
+    "If Else Block": {
+        "prefix": ["ifelse", "ifel"],
         "body": ["if(${1:conditional}) {", "\t$2", "}", "else {", "\t$0", "}"],
         "description": "An if else block"
     },
     "If Else-If Else Block": {
-        "prefix": ["ifelseif"],
+        "prefix": ["ifelseif", "ifelif"],
         "body": ["if(${1:conditional}) {", "\t$2", "}", "else if(${3:conditional}) {", "\t$4", "}", "else {", "\t$0", "}"],
         "description": "An if else-if else block"
     },
