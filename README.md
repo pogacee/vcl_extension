@@ -7,7 +7,7 @@ For example if there is an image subfolder under your extension project workspac
 
 \!\[feature X\]\(images/feature-x.png\)
 
----
+
 ## Extension Settings
 
 This extension contributes the following settings:
@@ -18,7 +18,7 @@ This extension contributes the following settings:
 
 There may be some issues with syntax highlighting colors
 
----
+
 
 ## Release Notes
 
