@@ -1,3 +1,77 @@
 {
-	
+	"Equals Comment Line": {
+        "prefix":["eql", "eqline"],
+        "body": [";========================================================================", "$0"],
+        "description": "A delimiting comment line made of equals signs"
+    },
+    "Dash Comment Line": {
+        "prefix": ["dashl", "dashline", "hyphl", "hyphenl", "hyphenline"],
+        "body": [";------------------------------------------------------------------------", "$0"],
+        "description": "A delimiting comment line made of dashes/hyphens"
+    },
+    "Equals Comment Line Enclosure": {
+        "prefix": ["eqlencl", "eqlineencl"],
+        "body": [";========================================================================", ";\t$0", ";========================================================================"],
+        "description": "An enclosing pair of delimiting comment lines made of equals signs"
+    },
+    "Dash Comment Line Enclosure": {
+        "prefix": ["dashlencl", "dashlineencl", "hyphlencl", "hyphenlencl", "hyphenlineencl"],
+        "body": [";------------------------------------------------------------------------", ";\t$0", ";------------------------------------------------------------------------"],
+        "description": "An enclosing pair of delimiting comment lines made of dashes/hyphens signs"
+    },
+    "While Loop": {
+        "prefix": ["while"],
+        "body": ["while(${1:conditional}) {", "\t$0", "}"],
+        "description": "A while loop"
+    },
+    "If Statement": {
+        "prefix": ["if"],
+        "body": ["if(${1:conditional}) {", "\t$0", "}"],
+        "description": "An if statement"
+    },
+    "Else-If Statement": {
+        "prefix": ["elif", "elseif"],
+        "body": ["else if(${1:conditional}) {", "\t$0", "}"],
+        "description": "An else-if statement"
+    },
+    "Else Statement": {
+        "prefix": ["else"],
+        "body": ["else {", "\t$0", "}"],
+        "description": "An else statement"
+    },
+    "If-Else Block": {
+        "prefix": ["ifelse"],
+        "body": ["if(${1:conditional}) {", "\t$2", "}", "else {", "\t$0", "}"],
+        "description": "An if else block"
+    },
+    "If Else-If Else Block": {
+        "prefix": ["ifelseif"],
+        "body": ["if(${1:conditional}) {", "\t$2", "}", "else if(${3:conditional}) {", "\t$4", "}", "else {", "\t$0", "}"],
+        "description": "An if else-if else block"
+    },
+    "Main Loop": {
+        "prefix": ["main"],
+        "body": ["mainLoop:", "\t$0", "goto mainLoop"],
+        "description": "An enclosing main loop."
+    },
+    "Subroutine": {
+        "prefix": ["subr", "subroutine"],
+        "body": ["${1:subroutineName}:", "\t$0", "return"]
+    },
+    "Parameter Level": {
+        "prefix": ["paraml", "paramlevel"],
+        "body": [";PARAMETER_ENTRY\t\"${1:name}\"", ";\t\tTYPE\t\t\t${2:type}",";\t\tLEVEL\t\t\t${3:level}",";END","$0"],
+        "description": "A parameter level block"
+    },
+    "Parameter Entry": {
+        "prefix": ["param", "paramentry"],
+        "body": [";PARAMETER_ENTRY\t\t\t\"${1:name}\"", ";\t\tTYPE\t\t\t${2:type}",";\t\tADRESS\t\t\t${3:addr}",";\t\tWIDTH\t\t\t${4:width}",";\t\tMINDSP\t\t\t${5:mindsp}",";\t\tMAXDSP\t\t\t${6:maxdsp}",";\t\tMAXRAW\t\t\t${7:minraw}",";\t\tUNITS\t\t\t${8:units}",";\t\tDECIMALPOS\t\t${9:decimalpos}",";\t\tDEFAULT\t\t\t${10:default}",";\t\tSTEP_SIZE\t\t${11:step_size}",";\t\tLAL_READ\t\t${12:lal_read}",";\t\tLAL_WRITE\t\t${13:lal_write}",";\t\tSIGNED\t\t\t${14:signed}",";\t\tHELP_HTML\t\t\"${15:html}\"",";END","$0"],
+        "description": "A parameter entry block"
+    },
+    "Revision": {
+        "prefix": ["rev", "revision"],
+        "body": [";\t$CURRENT_MONTH/$CURRENT_DATE/$CURRENT_YEAR - ${1:firstInitial}. ${2:lastName} - V1.${3:ver}\t\t${4:desc}$0"],
+        "description": "A revision line"
+    }
+    
 }
