@@ -38,7 +38,6 @@ This extension contributes the following settings:
 
 
 
----
 ## VCL_Extension Snippets
 
 ### **Revision Line**
