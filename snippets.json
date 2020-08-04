@@ -70,7 +70,7 @@
     },
     "Revision": {
         "prefix": ["rev", "revision"],
-        "body": [";\t$CURRENT_MONTH/$CURRENT_DATE/$CURRENT_YEAR - ${1:firstInitial}. ${2:lastName} - V1.${3:ver}\t\t${4:desc}$0"],
+        "body": [";\t$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE - ${1:firstInitial}. ${2:lastName} - v${3:ver}\t\t${4:desc}$0"],
         "description": "A revision line"
     }
     

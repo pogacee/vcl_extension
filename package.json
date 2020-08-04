@@ -3,9 +3,9 @@
     "displayName": "vcl_extension",
     "description": "An extension to highlight VCL Syntax",
     "version": "1.0.1",
-    "publisher": "leeh",
+    "publisher": "Henry Lee",
     "repository": "https://github.com/hnrlee/vcl_extension",
-    "icon": "",
+    "icon": "images/Curtis.png",
     "engines": {
         "vscode": "^1.47.0"
     },
