@@ -65,7 +65,7 @@
     },
     "Parameter Entry": {
         "prefix": ["param", "paramentry"],
-        "body": [";PARAMETER_ENTRY\t\t\t\"${1:name}\"", ";\t\tTYPE\t\t\t${2:type}",";\t\tADRESS\t\t\t${3:addr}",";\t\tWIDTH\t\t\t${4:width}",";\t\tMINDSP\t\t\t${5:mindsp}",";\t\tMAXDSP\t\t\t${6:maxdsp}",";\t\tMAXRAW\t\t\t${7:minraw}",";\t\tUNITS\t\t\t${8:units}",";\t\tDECIMALPOS\t\t${9:decimalpos}",";\t\tDEFAULT\t\t\t${10:default}",";\t\tSTEP_SIZE\t\t${11:step_size}",";\t\tLAL_READ\t\t${12:lal_read}",";\t\tLAL_WRITE\t\t${13:lal_write}",";\t\tSIGNED\t\t\t${14:signed}",";\t\tHELP_HTML\t\t\"${15:html}\"",";END","$0"],
+        "body": [";PARAMETER_ENTRY\t\t\t\"${1:name}\"", ";\t\tTYPE\t\t\t${2:type}",";\t\tADDRESS\t\t\t${3:addr}",";\t\tWIDTH\t\t\t${4:width}",";\t\tMINDSP\t\t\t${5:mindsp}",";\t\tMAXDSP\t\t\t${6:maxdsp}",";\t\tMAXRAW\t\t\t${7:minraw}",";\t\tUNITS\t\t\t${8:units}",";\t\tDECIMALPOS\t\t${9:decimalpos}",";\t\tDEFAULT\t\t\t${10:default}",";\t\tSTEP_SIZE\t\t${11:step_size}",";\t\tLAL_READ\t\t${12:lal_read}",";\t\tLAL_WRITE\t\t${13:lal_write}",";\t\tSIGNED\t\t\t${14:signed}",";\t\tHELP_HTML\t\t\"${15:html}\"",";END","$0"],
         "description": "A parameter entry block"
     },
     "Revision": {

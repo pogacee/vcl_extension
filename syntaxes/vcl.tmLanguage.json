@@ -153,11 +153,11 @@
 				},
 				{
 					"name": "constant.language.psm.vcl",
-					"match": "(?i)(PSM_)(DECIMAL|DECIMAL_[0-3]|BINARY|HEX|TEX_ONLY|)\\b"
+					"match": "(?i)(PSM_)(DECIMAL|DECIMAL_\\d|BINARY|HEX|TEX_ONLY|)\\b"
 				},
 				{
 					"name": "constant.language.vclCAN.messageTypeSpecifier.vcl",
-					"match": "(?i)(NMT|SYNC_ERR|PDO_MISO|PDO_MOSI|PDO_SYS[1-4]|SDO_MISO|SDO_MOSI|NODE)\\b"
+					"match": "(?i)(NMT|SYNC_ERR|PDO_MISO|PDO_MOSI|PDO_SYS\\d|SDO_MISO|SDO_MOSI|NODE)\\b"
 				},
 				{
 					"name": "constant.language.vclCAN.messageExecutionSchedule.vcl",
@@ -173,15 +173,15 @@
 				},
 				{
 					"name": "constant.language.vclCAN.blockid.vcl",
-					"match": "(?i)(CAN)(RO|1[0-4]|[1-9])\\b"
+					"match": "(?i)(CAN)(RO|\\d\\d|\\d)\\b"
 				},
 				{
 					"name": "constant.other.CANOpen.mailbox.id.vcl",
-					"match": "(?i)(CANOPEN_)(EMERGENCY|NMT|HEARTBEAT|SDO_MISO|SDO_MOSI|PDO_MISO_[1-2]|PDO_MOSI_[1-2])(_MAILBOX)\\b"
+					"match": "(?i)(CANOPEN_)(EMERGENCY|NMT|HEARTBEAT|SDO_MISO|SDO_MOSI|PDO_MISO_\\d|PDO_MOSI_\\d)(_MAILBOX)\\b"
 				},
 				{
 					"name": "constant.other.CANOpen.mailbox.mask.vcl",
-					"match": "(?i)(CANOPEN_)(EMERGENCY|NMT|HEARTBEAT|SDO_MISO|SDO_MOSI|PDO_MISO_[1-2]|PDO_MOSI_[1-2])(_MASK)\\b"
+					"match": "(?i)(CANOPEN_)(EMERGENCY|NMT|HEARTBEAT|SDO_MISO|SDO_MOSI|PDO_MISO_\\d|PDO_MOSI_\\d)(_MASK)\\b"
 				},
 				{
 					"name": "constant.language.serial.vcl",
@@ -189,35 +189,35 @@
 				},
 				{
 					"name": "constant.other.nvm.vcl",
-					"match": "(?i)(nv)(m40|m[1-3][0-9]|m[1-9])\\b"
+					"match": "(?i)(nv)(m40|m\\d\\d|m\\d)\\b"
 				},
 				{
 					"name": "constant.other.pid.vcl",
-					"match": "(?i)(pid[1-2])\\b"
+					"match": "(?i)(pid\\d)\\b"
 				},
 				{
 					"name": "constant.other.timer.vcl",
-					"match": "(?i)(tmr[1-3])\\b"
+					"match": "(?i)(tmr\\d)\\b"
 				},
 				{
 					"name": "constant.other.delay.vcl",
-					"match": "(?i)(dly1[0-6]|dly[1-9])\\b"
+					"match": "(?i)(dly\\d\\d|dly\\d)\\b"
 				},
 				{
 					"name": "constant.language.selectorSwitch.vcl",
-					"match": "(?i)(sel[1-8])]\\b"
+					"match": "(?i)(sel\\d)]\\b"
 				},
 				{
 					"name": "constant.language.ramp.vcl",
-					"match": "(?i)(rmp[1-4])\\b"
+					"match": "(?i)(rmp\\d)\\b"
 				},
 				{
 					"name": "constant.language.map.vcl",
-					"match": "(?i)(map[1-4])\\b"
+					"match": "(?i)(map\\d)\\b"
 				},
 				{
 					"name": "constant.language.limit.vcl",
-					"match": "(?i)(lim[1-4])\\b"
+					"match": "(?i)(lim\\d)\\b"
 				},
 				{
 					"name": "constant.language.limit.types.vcl",
@@ -225,23 +225,23 @@
 				},
 				{
 					"name": "constant.language.filter.vcl",
-					"match": "(?i)(FLT[1-4])\\b"
+					"match": "(?i)(FLT\\d)\\b"
 				},
 				{
 					"name": "constant.language.copy.vcl",
-					"match": "(?i)(cpy[1-4])\\b"
+					"match": "(?i)(cpy\\d)\\b"
 				},
 				{
 					"name": "constant.language.scl.vcl",
-					"match": "(?i)(scl[1-4])\\b"
+					"match": "(?i)(scl\\d)\\b"
 				},
 				{
 					"name": "constant.language.abs.vcl",
-					"match": "(?i)(abs[1-2])\\b"
+					"match": "(?i)(abs\\d)\\b"
 				},
 				{
 					"name": "constant.language.mtd.vcl",
-					"match": "(?i)(mtd[1-4])\\b"
+					"match": "(?i)(mtd\\d)\\b"
 				}
 			]
 		},
@@ -257,23 +257,23 @@
 			"patterns": [
 				{
 					"name": "variable.parameter.user.vcl",
-					"match": "(?i)(p_user100|p_user[1-9][0-9]|p_user[1-9])\\b"
+					"match": "(?i)(p_user\\d\\d\\d|p_user\\d\\d|p_user\\d)\\b"
 				},
 				{
 					"name": "variable.name.user.vcl",
-					"match": "(?i)(user100|user[1-9][0-9]|user[1-9])\\b"
+					"match": "(?i)(|nv)(user\\d\\d\\d|user\\d\\d|user\\d)\\b"
 				},
 				{
 					"name": "variable.bitparameter.user.vcl",
-					"match": "(?i)(p_user_bit100|p_user_bit[1-9][0-9]|p_user_bit[1-9])\\b"
+					"match": "(?i)(p_user_bit\\d\\d\\d|p_user_bit\\d\\d|p_user_bit\\d)\\b"
 				},
 				{
 					"name": "variable.bitname.user.vcl",
-					"match": "(?i)(user_bit100|user_bit[1-9][0-9]|user_bit[1-9])\\b"
+					"match": "(?i)(user_bit\\d\\d\\d|user_bit\\d\\d|user_bit\\d)\\b"
 				},
 				{
 					"name": "variable.other.switch.vcl",
-					"match": "(?i)(sw_[1-9][0-9]|sw_[1-9])(|_up|_down)\\b"
+					"match": "(?i)(sw_\\d\\d|sw_\\d)(|_up|_down)\\b"
 				},
 				{
 					"name": "variable.other.pwm.vcl",
@@ -281,51 +281,51 @@
 				},
 				{
 					"name": "variable.other.delay.vcl",
-					"match": "(?i)(dly1[0-6]|dly[1-9])(_output)\\b"
+					"match": "(?i)(dly\\d\\d|dly\\d)(_output)\\b"
 				},
 				{
 					"name": "variable.other.timer.vcl",
-					"match": "(?i)(tmr[1-3])(_ms_output|_sec_output|_hr_output|_enable)\\b"
+					"match": "(?i)(tmr\\d)(_ms_output|_sec_output|_hr_output|_enable)\\b"
 				},
 				{
 					"name": "variable.other.abs.vcl",
-					"match": "(?i)(abs[1-2])(_output)\\b"
+					"match": "(?i)(abs\\d)(_output)\\b"
 				},
 				{
 					"name": "variable.other.mtd.vcl",
-					"match": "(?i)(mtd[1-4])(_output)\\b"
+					"match": "(?i)(mtd\\d)(_output)\\b"
 				},
 				{
 					"name": "variable.other.scl.vcl",
-					"match": "(?i)(scl[1-4])(_output|_sf)\\b"
+					"match": "(?i)(scl\\d)(_output|_sf)\\b"
 				},
 				{
 					"name": "variable.other.filter.vcl",
-					"match": "(?i)(flt[1-4])(_output)\\b"
+					"match": "(?i)(flt\\d)(_output)\\b"
 				},
 				{
 					"name": "variable.other.limit.vcl",
-					"match": "(?i)(lim[1-4])(_output|_limit)\\b"
+					"match": "(?i)(lim\\d)(_output|_limit)\\b"
 				},
 				{
 					"name": "variable.other.map.vcl",
-					"match": "(?i)(map[1-4])(_output|_segment)\\b"
+					"match": "(?i)(map\\d)(_output|_segment)\\b"
 				},
 				{
 					"name": "variable.other.ramp.vcl",
-					"match": "(?i)(rmp[1-4])(_output|_hold)\\b"
+					"match": "(?i)(rmp\\d)(_output|_hold)\\b"
 				},
 				{
 					"name": "variable.other.selectorSwitch.vcl",
-					"match": "(?i)(sel[1-8])(_output|_4p_n_output|_select|_4p_select)\\b"
+					"match": "(?i)(sel\\d)(_output|_4p_n_output|_select|_4p_select)\\b"
 				},
 				{
 					"name": "variable.other.PID.vcl",
-					"match": "(?i)(pid[1-2]_output)\\b"
+					"match": "(?i)(pid\\d_output)\\b"
 				},
 				{
 					"name": "variable.other.nvm.vcl",
-					"match": "(?i)(m_restore_source|m_result|m_status|user1[0-5]|user[1-9])\\b"
+					"match": "(?i)(m_restore_source|m_result|m_status|user\\d\\d|user\\d)\\b"
 				},
 				{
 					"name": "variable.other.nvmparameters.vcl",
@@ -337,15 +337,15 @@
 				},
 				{
 					"name": "variable.other.sys.extendedfaultlogging.vcl",
-					"match": "(?i)(extended_log_)(fault_code|time_stamp|value_[1-5]|map_length|[1-5]_map_object_ID|write_index|read_index)\\b"
+					"match": "(?i)(extended_log_)(fault_code|time_stamp|value_\\d|map_length|\\d_map_object_ID|write_index|read_index)\\b"
 				},
 				{
 					"name": "variable.other.vclinterpreter.userVariables.vcl",
-					"match": "(?i)(?<!p_)(user120|user1[0-1][0-9]|user[1-9][0-9]|user[1-9]|user_bit10|user_bit[1-9]|vcl_app_ver|vcl_ipms|vcl_ipms_min)\\b"
+					"match": "(?i)(?<!p_)(user\\d\\d\\d|user\\d\\d|user\\d|user_bit\\d\\d|user_bit\\d|vcl_app_ver|vcl_ipms|vcl_ipms_min)\\b"
 				},
 				{
 					"name": "variable.other.vclinterpreter.persistentUserVariables.vcl",
-					"match": "(p_user100|p_user[1-9][0-9]|p_user[1-9]|p_user_bit10|p_user_bit[1-9])"
+					"match": "(p_user\\d\\d\\d|p_user\\d\\d|p_user\\d|p_user_bit\\d|p_user_bit\\d)"
 				},
 				{
 					"name": "variable.other.spyglass.vcl",
@@ -353,11 +353,11 @@
 				},
 				{
 					"name": "variable.other.CANOpen.pdo.miso.vcl",
-					"match": "(?i)(CAN_pdo_miso_[1-2]_)(map_[1-8]|map_errors|struct_length|cob_ID|length)\\b"
+					"match": "(?i)(CAN_pdo_miso_\\d_)(map_\\d|map_errors|struct_length|cob_ID|length)\\b"
 				},
 				{
 					"name": "variable.other.CANOpen.pdo.mosi.vcl",
-					"match": "(?i)(CAN_pdo_mosi_[1-2]_)(map_[1-8]|map_errors|struct_length|cob_ID|length)\\b"
+					"match": "(?i)(CAN_pdo_mosi_\\d_)(map_\\d|map_errors|struct_length|cob_ID|length)\\b"
 				},
 				{
 					"name": "variable.other.CANOpen.generalstatus.vcl",
@@ -405,7 +405,7 @@
 				},
 				{
 					"name": "variable.langauge.vclCAN.lengthOfLastMessage.vcl",
-					"match": "(?i)((CAN)(1[0-4]|[1-9])_length)\\b"
+					"match": "(?i)((CAN)(\\d\\d|\\d)_length)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.msg.vcl",

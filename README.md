@@ -207,7 +207,7 @@ param, paramentry
 ```vcl
 ;PARAMETER_ENTRY			"name"
 ;		TYPE			type
-;		ADRESS			addr
+;		ADDRESS			addr
 ;		WIDTH			width
 ;		MINDSP			mindsp
 ;		MAXDSP			maxdsp
