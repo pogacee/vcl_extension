@@ -27,3 +27,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.0.1]
 
 - Small changes to snippets file to add some more prefixes that were not saved in the previous release
+
+## [1.0.2]
+
+- Small fixes
