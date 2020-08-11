@@ -1,5 +1,5 @@
 
-# VCL_extension
+# VCL Extension
 This extension adds syntax highlighting for Curtis Instruments VCL Code and several useful code snippets.
 
 (I'm leaving this bit in to remember how to do it later when I add images)

@@ -1,6 +1,6 @@
 {
     "name": "vcl-extension",
-    "displayName": "vcl_extension",
+    "displayName": "VCL Extension",
     "description": "An extension to highlight VCL Syntax",
     "version": "1.0.2",
     "publisher": "leeh",
