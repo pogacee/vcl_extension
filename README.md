@@ -36,6 +36,9 @@ This extension contributes the following settings:
     * Parameter generation
     * Revision line generation
 
+### 1.0.2
+
+* Bugfixes
 
 
 ## VCL_Extension Snippets
