@@ -273,7 +273,7 @@
 				},
 				{
 					"name": "variable.language.switch.vcl",
-					"match": "(?i)(sw_\\d\\d|sw_\\d)(|_up|_down)\\b"
+					"match": "(?i)(sw_\\d\\d|sw_\\d|switch_\\d|switch_\\d\\d)(|_up|_down)\\b"
 				},
 				{
 					"name": "variable.language.pwm.vcl",
