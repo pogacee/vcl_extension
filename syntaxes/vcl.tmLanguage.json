@@ -280,6 +280,10 @@
 					"match": "(?i)(pwm\\d\\d|pwm\\d)(|_output)\\b"
 				},
 				{
+					"name": "variable.language.driver.vcl",
+					"match": "(?i)(driver\\d\\d|driver\\d)(|_output)\\b"
+				},
+				{
 					"name": "variable.language.delay.vcl",
 					"match": "(?i)(dly\\d\\d|dly\\d)(_output)\\b"
 				},
