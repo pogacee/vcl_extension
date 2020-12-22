@@ -45,6 +45,10 @@ This extension contributes the following settings:
 * Updated Readme
 * Added // line comment highlighting
 
+### 1.0.4
+
+* Updated Readme
+
 
 ## VCL_Extension Snippets
 
