@@ -55,7 +55,7 @@ rev, revision
 ```
 #### *Output*
 ```vcl
-;	MM/DD/YYYY - firstInitial. lastName - V1.ver		desc
+;	YYYY/MM/DD - firstInitial. lastName - V1.ver		desc
 ```
 ### **Equals Comment Line**
 #### *Prefix*
