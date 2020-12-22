@@ -33,6 +33,10 @@
 				{
 					"name": "comment.line.vcl",
 					"match": "(;.*?$)"
+				},
+				{
+					"name": "comment.line.slash.vcl",
+					"match": "(\\/\\/.*?$)"
 				}
 			]
 		},

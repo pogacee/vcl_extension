@@ -2,7 +2,7 @@
     "name": "vcl-extension",
     "displayName": "VCL Extension",
     "description": "An extension to highlight VCL Syntax",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "publisher": "leeh",
     "repository": "https://github.com/hnrlee/vcl_extension",
     "icon": "images/icon.png",
@@ -10,20 +10,31 @@
         "vscode": "^1.47.0"
     },
     "categories": [
-        "Programming Languages","Snippets"
+        "Programming Languages",
+        "Snippets"
     ],
     "contributes": {
-        "languages": [{
-            "id": "vcl",
-            "aliases": ["VCL", "vcl"],
-            "extensions": [".vcl",".VCL"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "vcl",
-            "scopeName": "source.vcl",
-            "path": "./syntaxes/vcl.tmLanguage.json"
-        }],
+        "languages": [
+            {
+                "id": "vcl",
+                "aliases": [
+                    "VCL",
+                    "vcl"
+                ],
+                "extensions": [
+                    ".vcl",
+                    ".VCL"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "vcl",
+                "scopeName": "source.vcl",
+                "path": "./syntaxes/vcl.tmLanguage.json"
+            }
+        ],
         "snippets": [
             {
                 "language": "vcl",

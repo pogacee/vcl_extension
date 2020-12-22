@@ -1,6 +1,6 @@
 
 # VCL Extension
-This extension adds syntax highlighting for Curtis Instruments VCL Code and several useful code snippets.
+This extension adds syntax highlighting for Curtis Instruments Vehicle Control Language (VCL) Code and several useful code snippets.
 
 (I'm leaving this bit in to remember how to do it later when I add images)
 For example if there is an image subfolder under your extension project workspace:
@@ -39,6 +39,11 @@ This extension contributes the following settings:
 ### 1.0.2
 
 * Bugfixes
+
+### 1.0.3
+
+* Updated Readme
+* Added // line comment highlighting
 
 
 ## VCL_Extension Snippets
