@@ -2,12 +2,6 @@
 # VCL Extension
 This extension adds syntax highlighting for Curtis Instruments Vehicle Control Language (VCL) Code and several useful code snippets.
 
-(I'm leaving this bit in to remember how to do it later when I add images)
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-
 ## Extension Settings
 
 This extension contributes the following settings:
@@ -16,9 +10,7 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-* There may be some issues with syntax highlighting colors
-
-
+* There may be some issues with syntax highlighting colors or "categorization" of keywords/variables
 
 ## Release Notes
 
@@ -48,6 +40,14 @@ This extension contributes the following settings:
 ### 1.0.4
 
 * Updated Readme
+
+### 1.0.5
+
+* Added autouser variables
+
+### 1.0.6
+
+* Fixed issue where OS variables/keywords like "Driver1" would still be highlighted if there were characters before it, such as when a user created variable is named "fooDriver1"
 
 
 ## VCL_Extension Snippets

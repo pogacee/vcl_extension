@@ -2,7 +2,6 @@
 
 All notable changes to the "vcl-extension" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 ## [0.5.1]
 
@@ -31,3 +30,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.0.2]
 
 - Small fixes
+
+## [1.0.5]
+
+- Added autouser variables to syntax highlighting
+
+## [1.0.6]
+
+- Fixed issue where OS variables/keywords like "Driver1" would still be highlighted if there were characters before it, such as when a user created variable is named "fooDriver1"
