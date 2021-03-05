@@ -6,7 +6,15 @@ This extension adds syntax highlighting for Curtis Instruments Vehicle Control L
 
 This extension contributes the following settings:
 
-* `vcl_extension.enable`: enable/disable this extension
+* `vcl_extension.enable`: Enable/Disable this extension
+* `vcl_extension.VS Code Outline.showIncludes`: Enable/Disable include statement visibility in Outline
+* `vcl_extension.VS Code Outline.showPUsers`: Enable/Disable PUser variable declaration visibility in Outline
+* `vcl_extension.VS Code Outline.showUsers`: Enable/Disable User variable declaration visibility in Outline
+* `vcl_extension.VS Code Outline.showBits`: Enable/Disable Bit variable declaration visibility in Outline
+* `vcl_extension.VS Code Outline.showAutousers`: Enable/Disable Autouser variable declaration visibility in Outline
+* `vcl_extension.VS Code Outline.showConstants`: Enable/Disable Constant variable declaration visibility in Outline
+* `vcl_extension.VS Code Outline.showSubroutineCalls`: Enable/Disable PUser Subroutine call statement visibility in Outline
+* `vcl_extension.VS Code Outline.showSubroutines`: Enable/Disable Subroutine declaration visibility in Outline
 
 ## Known Issues
 
@@ -49,6 +57,9 @@ This extension contributes the following settings:
 
 * Fixed issue where OS variables/keywords like "Driver1" would still be highlighted if there were characters before it, such as when a user created variable is named "fooDriver1"
 
+### 1.1.0
+
+* Added support for VS Code outline
 
 ## VCL_Extension Snippets
 
