@@ -1,19 +1,68 @@
 {
     "name": "vcl-extension",
-    "displayName": "VCL Extension",
+    "displayName": "VCL",
     "description": "An extension to highlight VCL Syntax",
-    "version": "1.0.6",
+    "version": "1.1.0",
     "publisher": "leeh",
     "repository": "https://github.com/hnrlee/vcl_extension",
     "icon": "images/icon.png",
     "engines": {
-        "vscode": "^1.47.0"
+        "vscode": "^1.53.0"
     },
     "categories": [
         "Programming Languages",
         "Snippets"
     ],
+    "activationEvents": [
+		"onLanguage:vcl"
+	],
+	"main": "out/extension.js",
     "contributes": {
+        "configuration": {
+            "title": "VCL",
+            "properties": {
+                "vcl-extension.VS Code Outline.showIncludes": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Specifies whether \"Include\" statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showPUsers": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Specifies whether \"P_User\" variable declaration statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showUsers": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Specifies whether \"User\" variable declaration statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showBits": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Specifies whether \"Bit\" variable declaration statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showAutousers": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Specifies whether \"Autouser\" variable declaration statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showConstants": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Specifies whether \"Constant\" variable declaration statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showSubroutineCalls": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Specifies whether subroutine call statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showSubroutines": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Specifies whether subroutine declaration statements show up in VS Code outline"
+                }
+            }
+        },
         "languages": [
             {
                 "id": "vcl",
@@ -41,5 +90,26 @@
                 "path": "./snippets.json"
             }
         ]
-    }
+    },
+    "scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.53.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	}
 }
