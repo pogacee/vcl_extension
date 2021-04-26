@@ -14,7 +14,15 @@
         "Snippets"
     ],
     "activationEvents": [
-		"onLanguage:vcl"
+		"onLanguage:vcl",
+        "onCommand:vcl-extension.toggleShowIncludes",
+        "onCommand:vcl-extension.toggleShowPUsers",
+        "onCommand:vcl-extension.toggleShowUsers",
+        "onCommand:vcl-extension.toggleShowBits",
+        "onCommand:vcl-extension.toggleShowAutousers",
+        "onCommand:vcl-extension.toggleShowConstants",
+        "onCommand:vcl-extension.toggleShowSubroutineCalls",
+        "onCommand:vcl-extension.toggleShowSubroutineDeclarations"
 	],
 	"main": "out/extension.js",
     "contributes": {
@@ -89,14 +97,108 @@
                 "language": "vcl",
                 "path": "./snippets.json"
             }
-        ]
+        ],
+        "commands":[
+            {
+                "command": "vcl-extension.toggleShowIncludes",
+                "title": "Toggle Outline Visibility: Include",
+                "category": "VCL"
+            },
+            {
+                "command": "vcl-extension.toggleShowPUsers",
+                "title": "Toggle Outline Visibility: P_User",
+                "category": "VCL"
+            },
+            {
+                "command": "vcl-extension.toggleShowUsers",
+                "title": "Toggle Outline Visibility: User",
+                "category": "VCL"
+            },
+            {
+                "command": "vcl-extension.toggleShowBits",
+                "title": "Toggle Outline Visibility: Bit",
+                "category": "VCL"
+            },
+            {
+                "command": "vcl-extension.toggleShowAutousers",
+                "title": "Toggle Outline Visibility: Autouser",
+                "category": "VCL"
+            },
+            {
+                "command": "vcl-extension.toggleShowConstants",
+                "title": "Toggle Outline Visibility: Constant",
+                "category": "VCL"
+            },
+            {
+                "command": "vcl-extension.toggleShowSubroutineCalls",
+                "title": "Toggle Outline Visibility: Subroutine Call",
+                "category": "VCL"
+            },
+            {
+                "command": "vcl-extension.toggleShowSubroutineDeclarations",
+                "title": "Toggle Outline Visibility: Subroutine Declaration",
+                "category": "VCL"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "when": "editorLangId == vcl",
+                    "command": "vcl-extension.toggleShowIncludes",
+                    "group": "2_workspace"
+
+                },
+                {
+                    "when": "editorLangId == vcl",
+                    "command": "vcl-extension.toggleShowPUsers",
+                    "group": "2_workspace"
+
+                },
+                {
+                    "when": "editorLangId == vcl",
+                    "command": "vcl-extension.toggleShowUsers",
+                    "group": "2_workspace"
+
+                },
+                {
+                    "when": "editorLangId == vcl",
+                    "command": "vcl-extension.toggleShowBits",
+                    "group": "2_workspace"
+
+                },
+                {
+                    "when": "editorLangId == vcl",
+                    "command": "vcl-extension.toggleShowAutousers",
+                    "group": "2_workspace"
+
+                },
+                {
+                    "when": "editorLangId == vcl",
+                    "command": "vcl-extension.toggleShowConstants",
+                    "group": "2_workspace"
+
+                },
+                {
+                    "when": "editorLangId == vcl",
+                    "command": "vcl-extension.toggleShowSubroutineCalls",
+                    "group": "2_workspace"
+
+                },
+                {
+                    "when": "editorLangId == vcl",
+                    "command": "vcl-extension.toggleShowSubroutineDeclarations",
+                    "group": "2_workspace"
+
+                }
+            ]
+        }
     },
     "scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
+		"pretest": "n6pm run compile && npm run lint",
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {

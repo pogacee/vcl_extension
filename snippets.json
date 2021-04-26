@@ -21,32 +21,32 @@
     },
     "While Loop": {
         "prefix": ["while"],
-        "body": ["while(${1:conditional}) {", "\t$0", "}"],
+        "body": ["while(${1:conditional})", "{", "\t$0", "}"],
         "description": "A while loop"
     },
     "If Statement": {
         "prefix": ["if"],
-        "body": ["if(${1:conditional}) {", "\t$0", "}"],
+        "body": ["if(${1:conditional})", "{", "\t$0", "}"],
         "description": "An if statement"
     },
     "Else-If Statement": {
         "prefix": ["elif", "elseif"],
-        "body": ["else if(${1:conditional}) {", "\t$0", "}"],
+        "body": ["else if(${1:conditional})", "{", "\t$0", "}"],
         "description": "An else-if statement"
     },
     "Else Statement": {
         "prefix": ["else", "el"],
-        "body": ["else {", "\t$0", "}"],
+        "body": ["else", "{", "\t$0", "}"],
         "description": "An else statement"
     },
     "If Else Block": {
         "prefix": ["ifelse", "ifel"],
-        "body": ["if(${1:conditional}) {", "\t$2", "}", "else {", "\t$0", "}"],
+        "body": ["if(${1:conditional})", "{", "\t$2", "}", "else", "{", "\t$0", "}"],
         "description": "An if else block"
     },
     "If Else-If Else Block": {
         "prefix": ["ifelseif", "ifelif"],
-        "body": ["if(${1:conditional}) {", "\t$2", "}", "else if(${3:conditional}) {", "\t$4", "}", "else {", "\t$0", "}"],
+        "body": ["if(${1:conditional})", "{", "\t$2", "}", "else if(${3:conditional})", "{", "\t$4", "}", "else", "{", "\t$0", "}"],
         "description": "An if else-if else block"
     },
     "Main Loop": {

@@ -19,6 +19,7 @@ This extension contributes the following settings:
 ## Known Issues
 
 * There may be some issues with syntax highlighting colors or "categorization" of keywords/variables
+* Sometimes the options to turn on/off certain outline features don't toggle correctly. Using the "Reload Window" usually helps update the extension.
 
 ## Release Notes
 
@@ -60,6 +61,10 @@ This extension contributes the following settings:
 ### 1.1.0
 
 * Added support for VS Code outline
+
+### 1.1.1
+
+* Added toggles for VS Code outline items (Found in both the settings and in the editor title bar [top right corner of editor])
 
 ## VCL_Extension Snippets
 

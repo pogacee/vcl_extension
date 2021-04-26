@@ -1,53 +1,104 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 'use strict';
 import * as vscode from 'vscode';
 
-
-
-
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
+	// Register Symbol provider for VCL
+	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider({scheme: "file", language: "vcl"}, new VCLDocumentSymbolProvider()));
 
-	context.subscriptions.push(
-		vscode.languages.registerDocumentSymbolProvider(
-			{scheme: "file", language: "vcl"},
-			new VCLDocumentSymbolProvider()
-		)
-	);
 
-	// // Use the console to output diagnostic information (console.log) and errors (console.error)
-	// // This line of code will only be executed once when your extension is activated
-	// console.log('Congratulations, your extension "vcl-extension" is now active!');
+	// Below: commands to toggle visibility of variables, subroutine declarations/calls, include statements in the VS Code outline
 
-	// // The command has been defined in the package.json file
-	// // Now provide the implementation of the command with registerCommand
-	// // The commandId parameter must match the command field in package.json
-	// let disposable = vscode.commands.registerCommand('vcl-extension.helloWorld', () => {
-	// 	// The code you place here will be executed every time your command is executed
+	// Include statements
 
-	// 	// Display a message box to the user
-	// 	vscode.window.showInformationMessage('Sup VS Code!');
-	// });
+	let workspaceConfig = vscode.workspace.getConfiguration('vcl-extension.VS Code Outline');
+	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowIncludes', () => {
+		let showIncludesStatus = workspaceConfig.get('showIncludes');
+		workspaceConfig.update('showIncludes', !showIncludesStatus, true);
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+		vscode.window.showInformationMessage('VCL: Include Statement Outline Visibility: ' + workspaceConfig.get('showIncludes'));
+		
+	}));
 
-	// context.subscriptions.push(disposable);
+	// P_User variables
+	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowPUsers', () => {
+		let showPUsersStatus = workspaceConfig.get('showPUsers');
+		workspaceConfig.update('showIncludes', !showPUsersStatus, true);
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+		vscode.window.showInformationMessage('VCL: P_User Variable Outline Visibility: ' + workspaceConfig.get('showPUsers'));
+		
+	}));
+
+	// User variables
+	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowUsers', () => {
+		let showUsersStatus = workspaceConfig.get('showUsers');
+		workspaceConfig.update('showUsers', !showUsersStatus, true);
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+		vscode.window.showInformationMessage('VCL: User Variable Outline Visibility: ' + workspaceConfig.get('showUsers'));
+		
+	}));
+
+	// Bit variables
+	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowBits', () => {
+		let showBitsStatus = workspaceConfig.get('showBits');
+		workspaceConfig.update('showBits', !showBitsStatus, true);
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+		vscode.window.showInformationMessage('VCL: Bit Variable Outline Visibility: ' + workspaceConfig.get('showBits'));
+		
+	}));
+
+	// Autouser variables
+	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowAutousers', () => {
+		let showAutousersStatus = workspaceConfig.get('showAutousers');
+		workspaceConfig.update('showAutousers', !showAutousersStatus, true);
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+		vscode.window.showInformationMessage('VCL: Autouser Variable Outline Visibility: ' + workspaceConfig.get('showAutousers'));
+		
+	}));
+
+	// Constant variables
+	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowConstants', () => {
+		let showConstantsStatus = workspaceConfig.get('showConstants');
+		workspaceConfig.update('showConstants', !showConstantsStatus, true);
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+		vscode.window.showInformationMessage('VCL: Constant Variable Outline Visibility: ' + workspaceConfig.get('showConstants'));
+		
+	}));
+
+	// Subroutine calls
+	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowSubroutineCalls', () => {
+		let showSubroutineCallsStatus = workspaceConfig.get('showSubroutineCalls');
+		workspaceConfig.update('showSubroutineCalls', !showSubroutineCallsStatus, true);
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+		vscode.window.showInformationMessage('VCL: Subroutine Call Outline Visibility: ' + workspaceConfig.get('showSubroutineCalls'));
+		
+	}));
+
+	//Subroutine declarations
+	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowSubroutineDeclarations', () => {
+		let showSubroutineDeclarationsStatus = workspaceConfig.get('showSubroutineDeclarations');
+		workspaceConfig.update('showSubroutineDeclarations', !showSubroutineDeclarationsStatus, true);
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+		vscode.window.showInformationMessage('VCL: Subroutine Declaration Outline Visibility: ' + workspaceConfig.get('showSubroutineDeclarations'));
+		
+	}));
+
+
+	
 }
 
 class VCLDocumentSymbolProvider implements vscode.DocumentSymbolProvider{
-	private format(cmd: string): string{
-		return cmd.substr(1).toLowerCase().replace(/^\w/, c => c.toUpperCase());
-	}
 
 	public provideDocumentSymbols(
 		document: vscode.TextDocument,
-		token: vscode.CancellationToken): Promise<vscode.DocumentSymbol[]>
-		{
+		token: vscode.CancellationToken): Promise<vscode.DocumentSymbol[]> {
 			return new Promise((resolve, reject) =>
 			{
 				let symbols: vscode.DocumentSymbol[] = [];
 				let nodes = [symbols];
+
+				// booleans for toggling visibility
+				// not sure if this is the best way to go about showing/hiding different symbols, because VS doesn't seem to update the outline unless the code has been edited
 				var showIncludes, showPUsers, showUsers, showBits, showAutousers, showConstants, showSubroutineCalls, showSubroutines;
 				showIncludes = vscode.workspace.getConfiguration("vcl-extension.VS Code Outline").get('showIncludes');
 				showPUsers = vscode.workspace.getConfiguration("vcl-extension.VS Code Outline").get('showPUsers');
@@ -57,6 +108,7 @@ class VCLDocumentSymbolProvider implements vscode.DocumentSymbolProvider{
 				showConstants = vscode.workspace.getConfiguration("vcl-extension.VS Code Outline").get('showConstants');
 				showSubroutineCalls = vscode.workspace.getConfiguration("vcl-extension.VS Code Outline").get('showSubroutineCalls');
 				showSubroutines = vscode.workspace.getConfiguration("vcl-extension.VS Code Outline").get('showSubroutines');
+				
 				let inside_subroutine = false;
 				for(var i = 0; i < document.lineCount; i++){
 					var line = document.lineAt(i);
@@ -99,14 +151,11 @@ class VCLDocumentSymbolProvider implements vscode.DocumentSymbolProvider{
 								nodes[nodes.length -1].push(new vscode.DocumentSymbol(tokens[j], 'Autouser Variable', vscode.SymbolKind.Variable, line.range, line.range));
 							}
 							else if(showUsers && (j <= tokens.length - 3) && tokens[j+1].toUpperCase().normalize() === "EQUALS" && /^(USER\d\d\d|USER\d\d|USER\d)$/.test(tokens[j+2].toUpperCase())){
-								console.log("User variable");
 								nodes[nodes.length - 1].push(new vscode.DocumentSymbol(tokens[j], 'User Variable', vscode.SymbolKind.Variable, line.range, line.range));
 							}
 							else if(showPUsers && j <= tokens.length - 3 && tokens[j+1].toUpperCase().normalize() === "EQUALS" && /^(P_USER\d\d\d|P_USER\d\d|P_USER\d)/.test(tokens[j+2].toUpperCase().normalize())){
-								console.log("P User Variable");
 								nodes[nodes.length - 1].push( new vscode.DocumentSymbol(tokens[j], 'P_User Variable', vscode.SymbolKind.Variable, line.range, line.range));
 							}
-
 							else if(showConstants && j <= tokens.length - 3 && tokens[j+1].toUpperCase().normalize() === "CONSTANT" && /^\w*/.test(tokens[j+2].toUpperCase().normalize())){
 								nodes[nodes.length - 1].push(new vscode.DocumentSymbol(tokens[j], 'Constant', vscode.SymbolKind.Constant, line.range, line.range));
 							}
@@ -116,16 +165,12 @@ class VCLDocumentSymbolProvider implements vscode.DocumentSymbolProvider{
 							else if(showIncludes && j <= tokens.length - 2 && tokens[j].toUpperCase().normalize() === "INCLUDE" && tokens[j + 1].toUpperCase().normalize().startsWith("\"")){
 								var fileName = line.text.substring(line.text.indexOf("\"") + 1, line.text.indexOf("\"",line.text.indexOf("\"") + 1)).trim();
 								nodes[nodes.length - 1].push(new vscode.DocumentSymbol(tokens[j] + " \"" + fileName + "\"", 'Include', vscode.SymbolKind.File, line.range, line.range));
-								console.log(fileName);
-
 							}
 							
 						}	
 					}
 				}
-
 				resolve(symbols);
-
 			});
 		}
 }
