@@ -66,6 +66,10 @@ This extension contributes the following settings:
 
 * Added toggles for VS Code outline items (Found in both the settings and in the editor title bar [top right corner of editor])
 
+### 1.1.2
+
+* Changed default settings for VS Code outline visibility (include statements, subroutine declarations, subroutine calls only visible)
+
 ## VCL_Extension Snippets
 
 ### **Revision Line**
