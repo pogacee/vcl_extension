@@ -68,6 +68,11 @@
                     "type": "boolean",
                     "default": true,
                     "markdownDescription": "Specifies whether subroutine declaration statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showModules": {
+                    "type": "boolean",
+                    "default" : true,
+                    "markdownDescription": "Specifies whether module definition statements show up in VS Code outline"
                 }
             }
         },

@@ -67,7 +67,7 @@
 					"name": "keyword.operator.bitwise.vcl"
 				},
 				{
-					"match": "\\b(?i)(goto|return|equals|bit|exit|enter|constant|const|call|variable|create)\\b",
+					"match": "\\b(?i)(goto|return|equals|bit|exit|enter|constant|const|call|variable|create|alias)\\b",
 					"name": "keyword.reserved.vcl"
 				}
 			]

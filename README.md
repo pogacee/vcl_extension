@@ -70,6 +70,11 @@ This extension contributes the following settings:
 
 * Changed default settings for VS Code outline visibility (include statements, subroutine declarations, subroutine calls only visible)
 
+### 1.1.3
+
+* Added "alias" keyword (equivalent to "equals)
+* Added module support
+
 ## VCL_Extension Snippets
 
 ### **Revision Line**
