@@ -1,6 +1,6 @@
 
 # VCL Extension
-This extension adds syntax highlighting for Curtis Instruments Vehicle Control Language (VCL) Code and several useful code snippets.
+This VS Code extension adds syntax highlighting, outline support, and several useful code snippets for Curtis Instruments Vehicle Control Language (VCL) code.
 
 ## Extension Settings
 
