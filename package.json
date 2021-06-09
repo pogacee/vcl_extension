@@ -2,7 +2,7 @@
     "name": "vcl-extension",
     "displayName": "VCL",
     "description": "An extension to highlight VCL Syntax",
-    "version": "1.1.1",
+    "version": "1.1.4",
     "publisher": "leeh",
     "repository": "https://github.com/hnrlee/vcl_extension",
     "icon": "https://raw.githubusercontent.com/hnrlee/vcl_extension/main/images/icon.png",
@@ -78,7 +78,7 @@
                 },
                 "vcl-extension.VS Code Outline.showModules": {
                     "type": "boolean",
-                    "default" : true,
+                    "default": true,
                     "markdownDescription": "Specifies whether module definition statements show up in VS Code outline"
                 }
             }
