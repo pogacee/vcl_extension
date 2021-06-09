@@ -1,5 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -83,7 +85,7 @@ export function activate(context: vscode.ExtensionContext) {
 		
 	}));
 
-	//Subroutine declarations
+	// Subroutine declarations
 	context.subscriptions.push(vscode.commands.registerCommand('vcl-extension.toggleShowSubroutineDeclarations', () => {
 		let showSubroutineDeclarationsStatus = workspaceConfig.get('showSubroutineDeclarations');
 		workspaceConfig.update('showSubroutineDeclarations', !showSubroutineDeclarationsStatus, 1 );
@@ -92,11 +94,155 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 
+	/*
+	Below: Code completion
+		We only need to parse the file once on function activation, so this occurs outside of the function.
+	*/
+	
+	// Grab CSV file with functions/help text.
+	const functionsSifCSVFilePath = context.asAbsolutePath(path.join('resources', 'functions.sif.csv'));
+
+	let completionItems: vscode.CompletionItem[] = [];
+	let functions: String[][] = [[]];
+	let functionNames: String[] = [];
+
+	fs.readFileSync(functionsSifCSVFilePath).toString().split('\n').forEach((element: string) => { // Read file, convert to string, split by line, iterate through each line
+		let splitLine: String[] = [];
+		let insideItem: boolean = false;
+		var substringStart = 0;
+
+		// Iterate through the length of the line (string)
+		for(var i = 0; i < element.length; i++){
+
+			if(element.charAt(i) === '"'){ // Toggle on/off if we're inside a quoted section
+				if(i < element.length && element.charAt(i + 1) === '"'){
+					i++; // skip escaped quote
+				}
+				else{
+					insideItem = !insideItem;
+				}
+			}
+			else if(element.charAt(i) === "," && !insideItem){ // Split on commas (assuming we're not inside a quoted section)
+				splitLine.push(element.substring(substringStart, i));
+				substringStart = i + 1;
+			}
+		}
+
+		// Deal with quotes that wrap strings, also convert escaped quotes to regular quotes ("" ==> ")
+		for(var i = 0; i < splitLine.length; i++){
+			// Cut off starting quote if it exists
+			if(splitLine[i].length > 1 && splitLine[i].startsWith('"') && !(splitLine[i].charAt(1) === '"')){
+				splitLine[i] = splitLine[i].substring(1);
+			}
+			// Cut off end quote if it exists
+			if(splitLine[i].length > 1 && splitLine[i].endsWith('"') && !(splitLine[i].charAt(splitLine[i].length - 2) === '"')){
+				splitLine[i] = splitLine[i].substring(0, splitLine[i].length - 1);
+			}
+			splitLine[i] = splitLine[i].replace(/""/g, '"');
+			splitLine[i] = splitLine[i].trim();
+		}
+
+		functions.push(splitLine); // Push each line split up as an array to functions. Each line is an array of values (function name, number of args, desc, etc.)
+		functionNames.push(splitLine[0].toUpperCase()); // Push each line's first item (functionName) into a separate list for ease of access later
+		completionItems.push(new vscode.CompletionItem(splitLine[0].concat("()"))); // We put a "()" at the end of the functionName before creating a CompletionItem and pushing it onto the list of CompletionItems.
+	});
+	completionItems.shift(); // Remove the first CompletionItem because it's just column titles.
+
+	const VCLCompletionItemProvider = vscode.languages.registerCompletionItemProvider(
+		'vcl',
+		{
+			provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+				return completionItems;
+			}
+		},
+		'' // trigger on anything
+	);
+	context.subscriptions.push(VCLCompletionItemProvider);
+
+	const VCLHoverProvider = vscode.languages.registerHoverProvider(
+		'vcl',
+		{
+			provideHover(document, position, token) {
+				const range = document.getWordRangeAtPosition(position);
+				const word = document.getText(range).toUpperCase();
+				var wordIndex = functionNames.indexOf(word) + 1;
+				if(wordIndex > 0){ // If word is present in the list of function names. We do > 0 instead of >= 0 because functionName at index 0 is a column title.
+					let functionName: vscode.MarkdownString = new vscode.MarkdownString("**" + functions[wordIndex][0] + "**" + "(");
+					let functionFeatureArea: vscode.MarkdownString = new vscode.MarkdownString(String(functions[wordIndex][3]));
+					let functionShortComment: vscode.MarkdownString = new vscode.MarkdownString(String(functions[wordIndex][4]));
+					let functionDescription: vscode.MarkdownString = new vscode.MarkdownString(String(functions[wordIndex][5]));
+					let functionNotes: vscode.MarkdownString = new vscode.MarkdownString(String(functions[wordIndex][6]));
+					let functionArgHelpsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Arguments\n\n");
+					let functionReturnsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Returns\n\n");
+					let functionErrorsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Errors\n\n");
+					
+					const numArgs = parseInt(String(functions[wordIndex][2]), 10);
+					const numReturns = parseInt(String(functions[wordIndex][39]), 10);
+					const numErrors = parseInt(String(functions[wordIndex][48]), 10);
+
+					// Function Arguments
+					for(var i = 7; i < 7 + numArgs * 2; i += 2){
+						functionName.appendMarkdown("*"); // Put asterisk to make insides in italics
+						functionName.appendMarkdown(functions[wordIndex][i].trim());
+						functionName.appendMarkdown("*");
+						
+						let currentArgName = functions[wordIndex][i];
+						let currentArgHelp = functions[wordIndex][i + 1];
+
+						functionArgHelpsMarkdown.appendMarkdown("*");
+						functionArgHelpsMarkdown.appendMarkdown(String(currentArgName));
+						functionArgHelpsMarkdown.appendMarkdown("*\n\n> ");
+						functionArgHelpsMarkdown.appendMarkdown("> ");
+						functionArgHelpsMarkdown.appendMarkdown(String(currentArgHelp));
+						if(i < 5 + numArgs * 2){
+							functionName.appendMarkdown(", ");
+							functionArgHelpsMarkdown.appendMarkdown("\n\n");
+						}
+					}
+					functionName.appendMarkdown(")");
+
+					//Function Returns
+					for(var i = 40; i < 40 + numReturns * 2; i += 2){
+						let currentReturnName = functions[wordIndex][i];
+						let currentReturnHelp = functions[wordIndex][i + 1];
+
+						functionReturnsMarkdown.appendMarkdown("*");
+						functionReturnsMarkdown.appendMarkdown(String(currentReturnName));
+						functionReturnsMarkdown.appendMarkdown("*\n\n> ");
+						functionReturnsMarkdown.appendMarkdown(String(currentReturnHelp));
+
+						if(i < 38 + numReturns * 2){
+							functionReturnsMarkdown.appendMarkdown("\n\n");
+						}
+					}
+					
+					//Function Errors
+					for(var i = 49; i < 49 + numErrors * 2; i += 2){
+						let currentErrorName = functions[wordIndex][i];
+						let currentErrorHelp = functions[wordIndex][i + 1];
+
+						functionErrorsMarkdown.appendMarkdown("*");
+						functionErrorsMarkdown.appendMarkdown(String(currentErrorName));
+						functionErrorsMarkdown.appendMarkdown("*\n\n> ");
+						functionErrorsMarkdown.appendMarkdown(String(currentErrorHelp));
+
+						if(i < 38 + numReturns * 2){
+							functionErrorsMarkdown.appendMarkdown("\n\n");
+						}
+					}
+
+					return {
+						contents: [functionName, functionFeatureArea, functionShortComment, functionDescription, functionNotes, functionArgHelpsMarkdown, functionReturnsMarkdown, functionErrorsMarkdown]
+					};
+				}
+			}
+		}
+	);
+	context.subscriptions.push(VCLHoverProvider);
 	
 }
 
 class VCLDocumentSymbolProvider implements vscode.DocumentSymbolProvider{
-
 	public provideDocumentSymbols(
 		document: vscode.TextDocument,
 		token: vscode.CancellationToken): Promise<vscode.DocumentSymbol[]> {

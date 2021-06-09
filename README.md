@@ -76,6 +76,11 @@ This extension contributes the following settings:
 * Added NVUser variables
 * Added module support in the VS Code Outline
 
+### 1.1.4
+
+* Added Hover support
+    * Hover the cursor over a VCL function and a box will display with information about that function.
+
 ## VCL_Extension Snippets
 
 ### **Revision Line**
