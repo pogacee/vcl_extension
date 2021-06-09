@@ -5,7 +5,7 @@
     "version": "1.1.4",
     "publisher": "leeh",
     "repository": "https://github.com/hnrlee/vcl_extension",
-    "icon": "https://raw.githubusercontent.com/hnrlee/vcl_extension/main/images/icon.png",
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.53.0"
     },
@@ -161,7 +161,7 @@
                 "title": "Toggle Outline Visibility: Subroutine Declaration",
                 "category": "VCL"
             }
-        ]
+            ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
