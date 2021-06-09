@@ -73,7 +73,8 @@ This extension contributes the following settings:
 ### 1.1.3
 
 * Added "alias" keyword (equivalent to "equals)
-* Added module support
+* Added NVUser variables
+* Added module support in the VS Code Outline
 
 ## VCL_Extension Snippets
 

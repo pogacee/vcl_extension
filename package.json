@@ -22,7 +22,9 @@
         "onCommand:vcl-extension.toggleShowAutousers",
         "onCommand:vcl-extension.toggleShowConstants",
         "onCommand:vcl-extension.toggleShowSubroutineCalls",
-        "onCommand:vcl-extension.toggleShowSubroutineDeclarations"
+        "onCommand:vcl-extension.toggleShowSubroutineDeclarations",
+        "onCommand: vcl-extension.toggleShowNVUsers",
+        "onCommand: vcl-extension.toggleShowModules"
     ],
     "main": "out/extension.js",
     "contributes": {
@@ -38,6 +40,11 @@
                     "type": "boolean",
                     "default": false,
                     "markdownDescription": "Specifies whether \"P_User\" variable declaration statements show up in VS Code outline"
+                },
+                "vcl-extension.VS Code Outline.showNVUsers": {
+                    "type": "boolean",
+                    "default": false,
+                    "markdownDescription": "Specifies whether \"NVUser\" variable declaration statements show up in VS Code outline"
                 },
                 "vcl-extension.VS Code Outline.showUsers": {
                     "type": "boolean",
@@ -120,6 +127,16 @@
                 "category": "VCL"
             },
             {
+                "command": "vcl-extension.toggleShowModules",
+                "title": "Toggle Outline Visibility: Module",
+                "category": "VCL"
+            },
+            {
+                "command": "vcl-extension.toggleShowNVUsers",
+                "title": "Toggle Outline Visibility: NVUser",
+                "category": "VCL"
+            },
+            {
                 "command": "vcl-extension.toggleShowBits",
                 "title": "Toggle Outline Visibility: Bit",
                 "category": "VCL"
@@ -144,51 +161,7 @@
                 "title": "Toggle Outline Visibility: Subroutine Declaration",
                 "category": "VCL"
             }
-        ],
-        "menus": {
-            "editor/title": [
-                {
-                    "when": "editorLangId == vcl",
-                    "command": "vcl-extension.toggleShowIncludes",
-                    "group": "2_workspace"
-                },
-                {
-                    "when": "editorLangId == vcl",
-                    "command": "vcl-extension.toggleShowPUsers",
-                    "group": "2_workspace"
-                },
-                {
-                    "when": "editorLangId == vcl",
-                    "command": "vcl-extension.toggleShowUsers",
-                    "group": "2_workspace"
-                },
-                {
-                    "when": "editorLangId == vcl",
-                    "command": "vcl-extension.toggleShowBits",
-                    "group": "2_workspace"
-                },
-                {
-                    "when": "editorLangId == vcl",
-                    "command": "vcl-extension.toggleShowAutousers",
-                    "group": "2_workspace"
-                },
-                {
-                    "when": "editorLangId == vcl",
-                    "command": "vcl-extension.toggleShowConstants",
-                    "group": "2_workspace"
-                },
-                {
-                    "when": "editorLangId == vcl",
-                    "command": "vcl-extension.toggleShowSubroutineCalls",
-                    "group": "2_workspace"
-                },
-                {
-                    "when": "editorLangId == vcl",
-                    "command": "vcl-extension.toggleShowSubroutineDeclarations",
-                    "group": "2_workspace"
-                }
             ]
-        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
