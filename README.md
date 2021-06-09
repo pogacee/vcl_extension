@@ -172,7 +172,8 @@ if
 ```
 #### *Output*
 ```vcl
-if(conditional) {
+if(conditional)
+{
 
 }
 ```
@@ -183,7 +184,8 @@ elif, elseif
 ```
 #### *Output*
 ```vcl
-else if(conditional) {
+else if(conditional)
+{
 
 }
 ```
@@ -194,7 +196,8 @@ else, el
 ```
 #### *Output*
 ```vcl
-else {
+else
+{
 
 }
 ```
@@ -205,10 +208,12 @@ ifelse, ifel
 ```
 #### *Output*
 ```vcl
-if(conditional) {
+if(conditional)
+{
 
 }
-else {
+else
+{
 
 }
 ```
@@ -219,13 +224,16 @@ ifelseif, ifelif
 ```
 #### *Output*
 ```vcl
-if(conditional) {
+if(conditional)
+{
 
 }
-else if(conditional) {
+else if(conditional)
+{
 
 }
-else {
+else
+{
 
 }
 ```
