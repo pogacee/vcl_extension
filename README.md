@@ -80,6 +80,11 @@ This extension contributes the following settings:
 
 * Added Hover support
     * Hover the cursor over a VCL function and a box will display with information about that function.
+* Added basic code completion for function names
+
+### 1.1.5
+
+* Updated function list and README
 
 ## VCL_Extension Snippets
 
