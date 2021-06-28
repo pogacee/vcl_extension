@@ -86,6 +86,10 @@ This extension contributes the following settings:
 
 * Updated function list and README
 
+### 1.1.6
+
+* Updated function hover and function suggestions.
+
 ## VCL_Extension Snippets
 
 ### **Revision Line**

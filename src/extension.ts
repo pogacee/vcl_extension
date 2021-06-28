@@ -144,7 +144,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 		functions.push(splitLine); // Push each line split up as an array to functions. Each line is an array of values (function name, number of args, desc, etc.)
 		functionNames.push(splitLine[0].toUpperCase()); // Push each line's first item (functionName) into a separate list for ease of access later
-		completionItems.push(new vscode.CompletionItem(splitLine[0].concat("()"))); // We put a "()" at the end of the functionName before creating a CompletionItem and pushing it onto the list of CompletionItems.
+		//completionItems.push(new vscode.CompletionItem(splitLine[0].concat("()"))); // We put a "()" at the end of the functionName before creating a CompletionItem and pushing it onto the list of CompletionItems.
+		const snippetCompletion = new vscode.CompletionItem(String(splitLine[0]));
+		snippetCompletion.insertText = new vscode.SnippetString(splitLine[0].concat("($1)"));
+		snippetCompletion.documentation = new vscode.MarkdownString(String(splitLine[4]));
+		completionItems.push(snippetCompletion);
 	});
 	completionItems.shift(); // Remove the first CompletionItem because it's just column titles.
 
@@ -167,33 +171,29 @@ export function activate(context: vscode.ExtensionContext) {
 				const word = document.getText(range).toUpperCase();
 				var wordIndex = functionNames.indexOf(word) + 1;
 				if(wordIndex > 0){ // If word is present in the list of function names. We do > 0 instead of >= 0 because functionName at index 0 is a column title.
+
+					// If the number of args/returns/errors is a non-blank field, return the parsed int. Otherwise just return 0.
+					const numArgs = ((functions[wordIndex][2]) ? (parseInt(String(functions[wordIndex][2]), 10)) : 0);
+					const numReturns = ((functions[wordIndex][39]) ? (parseInt(String(functions[wordIndex][39]), 10)) : 0);
+					const numErrors = ((functions[wordIndex][48]) ? (parseInt(String(functions[wordIndex][48]), 10)) : 0);
+
 					let functionName: vscode.MarkdownString = new vscode.MarkdownString("**" + functions[wordIndex][0] + "**" + "(");
 					let functionFeatureArea: vscode.MarkdownString = new vscode.MarkdownString(String(functions[wordIndex][3]));
 					let functionShortComment: vscode.MarkdownString = new vscode.MarkdownString(String(functions[wordIndex][4]));
 					let functionDescription: vscode.MarkdownString = new vscode.MarkdownString(String(functions[wordIndex][5]));
 					let functionNotes: vscode.MarkdownString = new vscode.MarkdownString(String(functions[wordIndex][6]));
-					let functionArgHelpsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Arguments\n\n");
-					let functionReturnsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Returns\n\n");
-					let functionErrorsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Errors\n\n");
-					
-					const numArgs = parseInt(String(functions[wordIndex][2]), 10);
-					const numReturns = parseInt(String(functions[wordIndex][39]), 10);
-					const numErrors = parseInt(String(functions[wordIndex][48]), 10);
+					let functionArgHelpsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Arguments (" + numArgs + ")\n\n");
+					let functionReturnsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Returns (" + numReturns + ")\n\n");
+					let functionErrorsMarkdown: vscode.MarkdownString = new vscode.MarkdownString("#### Errors (" + numErrors + ")\n\n");
 
 					// Function Arguments
 					for(var i = 7; i < 7 + numArgs * 2; i += 2){
-						functionName.appendMarkdown("*"); // Put asterisk to make insides in italics
-						functionName.appendMarkdown(functions[wordIndex][i].trim());
-						functionName.appendMarkdown("*");
-						
-						let currentArgName = functions[wordIndex][i];
-						let currentArgHelp = functions[wordIndex][i + 1];
 
-						functionArgHelpsMarkdown.appendMarkdown("*");
-						functionArgHelpsMarkdown.appendMarkdown(String(currentArgName));
-						functionArgHelpsMarkdown.appendMarkdown("*\n\n> ");
-						functionArgHelpsMarkdown.appendMarkdown("> ");
-						functionArgHelpsMarkdown.appendMarkdown(String(currentArgHelp));
+						let currentArgName = functions[wordIndex][i].trim();
+						let currentArgHelp = functions[wordIndex][i + 1].trim();
+						functionName.appendMarkdown((currentArgName) ? "*" + currentArgName + "*": "*Arg" + (i - 6) + "*"); // if there's an arg name, put it in. Otherwise just do generic "Arg#"
+						functionArgHelpsMarkdown.appendMarkdown((currentArgName) ? ("*" + String(currentArgName) + "*\n\n> ") : ("\n\n> "));
+						functionArgHelpsMarkdown.appendMarkdown(currentArgHelp ? String(currentArgHelp) : "*Arg" + (i - 6) + ": Argument name not provided. Check Sysinfo for information.*");
 						if(i < 5 + numArgs * 2){
 							functionName.appendMarkdown(", ");
 							functionArgHelpsMarkdown.appendMarkdown("\n\n");
@@ -207,9 +207,9 @@ export function activate(context: vscode.ExtensionContext) {
 						let currentReturnHelp = functions[wordIndex][i + 1];
 
 						functionReturnsMarkdown.appendMarkdown("*");
-						functionReturnsMarkdown.appendMarkdown(String(currentReturnName));
+						functionReturnsMarkdown.appendMarkdown((currentReturnName) ? String(currentReturnName): "Ret" + (i - 39) + ": Return name not provided. Check Sysinfo for information.");
 						functionReturnsMarkdown.appendMarkdown("*\n\n> ");
-						functionReturnsMarkdown.appendMarkdown(String(currentReturnHelp));
+						functionReturnsMarkdown.appendMarkdown((currentReturnHelp) ? String(currentReturnHelp) : "Return help text not provided. Check Sysinfo for information.");
 
 						if(i < 38 + numReturns * 2){
 							functionReturnsMarkdown.appendMarkdown("\n\n");
@@ -222,9 +222,9 @@ export function activate(context: vscode.ExtensionContext) {
 						let currentErrorHelp = functions[wordIndex][i + 1];
 
 						functionErrorsMarkdown.appendMarkdown("*");
-						functionErrorsMarkdown.appendMarkdown(String(currentErrorName));
+						functionErrorsMarkdown.appendMarkdown((currentErrorName) ? String(currentErrorName) : "Err" + (i - 48) + "Error name not provided. Check Sysinfo for information.");
 						functionErrorsMarkdown.appendMarkdown("*\n\n> ");
-						functionErrorsMarkdown.appendMarkdown(String(currentErrorHelp));
+						functionErrorsMarkdown.appendMarkdown((currentErrorHelp) ? String(currentErrorHelp) : "Error help text not provided. Check Sysinfo for information.");
 
 						if(i < 38 + numReturns * 2){
 							functionErrorsMarkdown.appendMarkdown("\n\n");

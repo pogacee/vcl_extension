@@ -1,8 +1,8 @@
 {
     "name": "vcl-extension",
     "displayName": "VCL",
-    "description": "An extension to highlight VCL Syntax",
-    "version": "1.1.5",
+    "description": "An extension to highlight VCL Syntax, add code completions, provide hovers, and support the VS Code Outline",
+    "version": "1.1.6",
     "publisher": "leeh",
     "repository": "https://github.com/hnrlee/vcl_extension",
     "icon": "images/icon.png",
