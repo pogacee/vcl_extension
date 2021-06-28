@@ -53,30 +53,30 @@ All notable changes to the "vcl-extension" extension will be documented in this 
     - Include Statements
 - Each item can be toggled on/off in the settings or in the `settings.json` file.
 
-### [1.1.1]
+## [1.1.1]
 
 - Added toggles for VS Code outline items (Found in both the settings and in the editor title bar [top right corner of editor])
 
-### [1.1.2]
+## [1.1.2]
 
 - Changed default settings for VS Code outline visibility (include statements, subroutine declarations, subroutine calls only visible)
 
-### [1.1.3]
+## [1.1.3]
 
 - Added "alias" keyword (equivalent to "equals)
 - Added NVUser variables
 - Added module support in the VS Code Outline
 
-### [1.1.4]
+## [1.1.4]
 
 - Added Hover support
     - Hover the cursor over a VCL function and a box will display with information about that function.
 - Added basic code completion for function names
 
-### [1.1.5]
+## [1.1.5]
 
 - Updated function list and README
 
-### [1.1.6]
+## [1.1.6]
 
 - Updated function hover and function suggestions.
