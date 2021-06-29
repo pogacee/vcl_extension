@@ -192,8 +192,8 @@ export function activate(context: vscode.ExtensionContext) {
 						let currentArgName = functions[wordIndex][i].trim();
 						let currentArgHelp = functions[wordIndex][i + 1].trim();
 						functionName.appendMarkdown((currentArgName) ? "*" + currentArgName + "*": "*Arg" + (i - 6) + "*"); // if there's an arg name, put it in. Otherwise just do generic "Arg#"
-						functionArgHelpsMarkdown.appendMarkdown((currentArgName) ? ("*" + String(currentArgName) + "*\n\n> ") : ("\n\n> "));
-						functionArgHelpsMarkdown.appendMarkdown(currentArgHelp ? String(currentArgHelp) : "*Arg" + (i - 6) + ": Argument name not provided. Check Sysinfo for information.*");
+						functionArgHelpsMarkdown.appendMarkdown((currentArgName) ? ("*" + String(currentArgName) + "*\n\n> ") : ("*Arg" + (i - 6) + ": Argument name not provided. Check Sysinfo for information.*\n\n> "));
+						functionArgHelpsMarkdown.appendMarkdown(currentArgHelp ? String(currentArgHelp) : "Argument help text not provided. Check Sysinfo for information.");
 						if(i < 5 + numArgs * 2){
 							functionName.appendMarkdown(", ");
 							functionArgHelpsMarkdown.appendMarkdown("\n\n");
