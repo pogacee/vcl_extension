@@ -90,6 +90,10 @@ This extension contributes the following settings:
 
 * Updated function hover and function suggestions.
 
+### 1.1.7
+
+* Added constants to hovers and suggestions.
+
 ## VCL_Extension Snippets
 
 ### **Revision Line**

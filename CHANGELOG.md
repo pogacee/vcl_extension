@@ -41,7 +41,7 @@ All notable changes to the "vcl-extension" extension will be documented in this 
 
 ## [1.1.0]
 
-### VS Code outline support has arrived!
+### VS Code outline support!
 - Added support for the VS Code Outline. This feature is very similar to the Function List in Notepad++. It is configurable so that the user has the option of showing: 
     - Subroutines
     - Subroutine Calls
@@ -80,3 +80,7 @@ All notable changes to the "vcl-extension" extension will be documented in this 
 ## [1.1.6]
 
 - Updated function hover and function suggestions.
+
+## 1.1.7
+
+* Added constants to hovers and suggestions.

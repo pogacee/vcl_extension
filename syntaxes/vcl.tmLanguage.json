@@ -106,7 +106,7 @@
 					"end": "(\\))",
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.definition.parameters.end.bracket.round.java"
+							"name": "punctuation.definition.parameters.end.bracket.round.vcl"
 						}
 					},
 					"patterns": [
