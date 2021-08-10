@@ -94,6 +94,10 @@ This extension contributes the following settings:
 
 * Added constants to hovers and suggestions.
 
+### 1.1.8
+
+* Fixed issue where putting certain OS variables in a subroutine name (or otherwise using the variable) with an underscore preceeding the variable would cause the variable name to still be highlighted.
+
 ## VCL_Extension Snippets
 
 ### **Revision Line**

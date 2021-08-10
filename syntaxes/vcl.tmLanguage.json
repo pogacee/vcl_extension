@@ -261,175 +261,171 @@
 			"patterns": [
 				{
 					"name": "variable.parameter.user.vcl",
-					"match": "(?i)\\b(p_user\\d\\d\\d|p_user\\d\\d|p_user\\d)\\b"
+					"match": "(?i)\\b(?<!_)(p_user\\d\\d\\d|p_user\\d\\d|p_user\\d)\\b"
 				},
 				{
 					"name": "variable.name.user.vcl",
-					"match": "(?i)\\b(|auto|nv)(user\\d\\d\\d|user\\d\\d|user\\d)\\b"
+					"match": "(?i)\\b(?<!_)(|auto|nv)(user\\d\\d\\d|user\\d\\d|user\\d)\\b"
 				},
 				{
 					"name": "variable.bitparameter.user.vcl",
-					"match": "(?i)\\b(p_user_bit\\d\\d\\d|p_user_bit\\d\\d|p_user_bit\\d)\\b"
+					"match": "(?i)\\b(?<!_)(p_user_bit\\d\\d\\d|p_user_bit\\d\\d|p_user_bit\\d)\\b"
 				},
 				{
 					"name": "variable.bitname.user.vcl",
-					"match": "(?i)\\b(user_bit\\d\\d\\d|user_bit\\d\\d|user_bit\\d)\\b"
+					"match": "(?i)\\b(?<!_)(user_bit\\d\\d\\d|user_bit\\d\\d|user_bit\\d)\\b"
 				},
 				{
 					"name": "variable.language.switch.vcl",
-					"match": "(?i)\\b(sw_\\d\\d|sw_\\d|switch_\\d|switch_\\d\\d)(|_up|_down)\\b"
+					"match": "(?i)\\b(?<!_)(sw_\\d\\d|sw_\\d|switch_\\d|switch_\\d\\d)(|_up|_down)\\b"
 				},
 				{
 					"name": "variable.language.pwm.vcl",
-					"match": "(?i)\\b(pwm\\d\\d|pwm\\d)(|_output)\\b"
+					"match": "(?i)\\b(?<!_)(pwm\\d\\d|pwm\\d)(|_output)\\b"
 				},
 				{
 					"name": "variable.language.driver.vcl",
-					"match": "(?i)\\b(driver\\d\\d|driver\\d)(|_output)\\b"
+					"match": "(?i)\\b(?<!_)(driver\\d\\d|driver\\d)(|_output)\\b"
 				},
 				{
 					"name": "variable.language.delay.vcl",
-					"match": "(?i)\\b(dly\\d\\d|dly\\d)(_output)\\b"
+					"match": "(?i)\\b(?<!_)(dly\\d\\d|dly\\d)(_output)\\b"
 				},
 				{
 					"name": "variable.language.timer.vcl",
-					"match": "(?i)\\b(tmr\\d)(_ms_output|_sec_output|_hr_output|_enable)\\b"
+					"match": "(?i)\\b(?<!_)(tmr\\d)(_ms_output|_sec_output|_hr_output|_enable)\\b"
 				},
 				{
 					"name": "variable.language.abs.vcl",
-					"match": "(?i)\\b(abs\\d)(_output)\\b"
+					"match": "(?i)\\b(?<!_)(abs\\d)(_output)\\b"
 				},
 				{
 					"name": "variable.language.mtd.vcl",
-					"match": "(?i)\\b(mtd\\d)(_output)\\b"
+					"match": "(?i)\\b(?<!_)(mtd\\d)(_output)\\b"
 				},
 				{
 					"name": "variable.language.scl.vcl",
-					"match": "(?i)\\b(scl\\d)(_output|_sf)\\b"
+					"match": "(?i)\\b(?<!_)(scl\\d)(_output|_sf)\\b"
 				},
 				{
 					"name": "variable.language.filter.vcl",
-					"match": "(?i)\\b(flt\\d)(_output)\\b"
+					"match": "(?i)\\b(?<!_)(flt\\d)(_output)\\b"
 				},
 				{
 					"name": "variable.language.limit.vcl",
-					"match": "(?i)\\b(lim\\d)(_output|_limit)\\b"
+					"match": "(?i)\\b(?<!_)(lim\\d)(_output|_limit)\\b"
 				},
 				{
 					"name": "variable.language.map.vcl",
-					"match": "(?i)\\b(map\\d)(_output|_segment)\\b"
+					"match": "(?i)\\b(?<!_)(map\\d)(_output|_segment)\\b"
 				},
 				{
 					"name": "variable.language.ramp.vcl",
-					"match": "(?i)\\b(rmp\\d)(_output|_hold)\\b"
+					"match": "(?i)\\b(?<!_)(rmp\\d)(_output|_hold)\\b"
 				},
 				{
 					"name": "variable.language.selectorSwitch.vcl",
-					"match": "(?i)\\b(sel\\d)(_output|_4p_n_output|_select|_4p_select)\\b"
+					"match": "(?i)\\b(?<!_)(sel\\d)(_output|_4p_n_output|_select|_4p_select)\\b"
 				},
 				{
 					"name": "variable.language.PID.vcl",
-					"match": "(?i)\\b(pid\\d_output)\\b"
+					"match": "(?i)\\b(?<!_)(pid\\d_output)\\b"
 				},
 				{
 					"name": "variable.language.nvm.vcl",
-					"match": "(?i)\\b(m_restore_source|m_result|m_status|user\\d\\d|user\\d)\\b"
+					"match": "(?i)\\b(?<!_)(m_restore_source|m_result|m_status|user\\d\\d|user\\d)\\b"
 				},
 				{
 					"name": "variable.language.nvmparameters.vcl",
-					"match": "(?i)\\b(parameter_)(interlock_key|defaults_restore_source)\\b"
+					"match": "(?i)\\b(?<!_)(parameter_)(interlock_key|defaults_restore_source)\\b"
 				},
 				{
 					"name": "variable.language.sys.vcl",
-					"match": "(?i)\\b(sys_restored_)(pfb|per|not)\\b"
+					"match": "(?i)\\b(?<!_)(sys_restored_)(pfb|per|not)\\b"
 				},
 				{
 					"name": "variable.language.sys.extendedfaultlogging.vcl",
-					"match": "(?i)\\b(extended_log_)(fault_code|time_stamp|value_\\d|map_length|\\d_map_object_ID|write_index|read_index)\\b"
-				},
-				{
-					"name": "variable.language.vclinterpreter.userVariables.vcl",
-					"match": "(?i)(?<!p_)(user\\d\\d\\d|user\\d\\d|user\\d|user_bit\\d\\d|user_bit\\d|vcl_app_ver|vcl_ipms|vcl_ipms_min)\\b"
+					"match": "(?i)\\b(?<!_)(extended_log_)(fault_code|time_stamp|value_\\d|map_length|\\d_map_object_ID|write_index|read_index)\\b"
 				},
 				{
 					"name": "variable.language.spyglass.vcl",
-					"match": "(?i)\\b(protocol_)(tty|1|2)\\b"
+					"match": "(?i)\\b(?<!_)(protocol_)(tty|1|2)\\b"
 				},
 				{
 					"name": "variable.language.CANOpen.pdo.miso.vcl",
-					"match": "(?i)\\b(CAN_pdo_miso_\\d_)(map_\\d|map_errors|struct_length|cob_ID|length)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_pdo_miso_\\d_)(map_\\d|map_errors|struct_length|cob_ID|length)\\b"
 				},
 				{
 					"name": "variable.language.CANOpen.pdo.mosi.vcl",
-					"match": "(?i)\\b(CAN_pdo_mosi_\\d_)(map_\\d|map_errors|struct_length|cob_ID|length)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_pdo_mosi_\\d_)(map_\\d|map_errors|struct_length|cob_ID|length)\\b"
 				},
 				{
 					"name": "variable.language.CANOpen.generalstatus.vcl",
-					"match": "(?i)\\b((CANopen_)(system_status_flags|bus_cycle_time)|(CAN_)(pdo_response_period|nmt_state))\\b"
+					"match": "(?i)\\b(?<!_)((CANopen_)(system_status_flags|bus_cycle_time)|(CAN_)(pdo_response_period|nmt_state))\\b"
 				},
 				{
 					"name": "variable.language.CANOpen.generalcontrol.vcl",
-					"match": "(?i)\\b(CANopen_heart_beat_rate|CANopen_emergency_rate|CAN_pdo_timeout_period)\\b"
+					"match": "(?i)\\b(?<!_)(CANopen_heart_beat_rate|CANopen_emergency_rate|CAN_pdo_timeout_period)\\b"
 				},
 				{
 					"name": "variable.language.CANOpen.sdoblocktransfer.vcl",
-					"match": "(?i)\\b(start_CAN_flash_(download|upload_os|upload_app))\\b"
+					"match": "(?i)\\b(?<!_)(start_CAN_flash_(download|upload_os|upload_app))\\b"
 				},
 				{
 					"name": "variable.language.CANOpen.eewrite.vcl",
-					"match": "(?i)\\b(CANopen_ee_status_flags|CAN_ee_writes_enabled)\\b"
+					"match": "(?i)\\b(?<!_)(CANopen_ee_status_flags|CAN_ee_writes_enabled)\\b"
 				},
 				{
 					"name": "variable.language.CANOpen.suppression.vcl",
-					"match": "(?i)\\b(suppress_CANopen_init)\\b"
+					"match": "(?i)\\b(?<!_)(suppress_CANopen_init)\\b"
 				},
 				{
 					"name": "variable.language.vclCAN.status.vcl",
-					"match": "(?i)\\b(CAN_bus_on|CAN_error_status)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_bus_on|CAN_error_status)\\b"
 				},
 				{
 					"name": "variable.language.vclCAN.status.mailbox.vcl",
-					"match": "(?i)\\b(CAN_)(response_error|msg_sent|msg_read)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_)(response_error|msg_sent|msg_read)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.dataTransmissionRate.vcl",
-					"match": "(?i)\\b(CAN_baud_rate)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_baud_rate)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.busStatus.vcl",
-					"match": "(?i)\\b(CAN_bus_on)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_bus_on)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.busErrorMailboxID.vcl",
-					"match": "(?i)\\b(CAN_error_mailbox)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_error_mailbox)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.busErrorStatus.vcl",
-					"match": "(?i)\\b(CAN_error_status)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_error_status)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.lengthOfLastMessage.vcl",
-					"match": "(?i)\\b((CAN)(\\d\\d|\\d)_length)\\b"
+					"match": "(?i)\\b(?<!_)((CAN)(\\d\\d|\\d)_length)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.msg.vcl",
-					"match": "(?i)\\b(CAN_msg_)(recd|sent)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_msg_)(recd|sent)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.responseTimeoutFlags.vcl",
-					"match": "(?i)\\b(CAN_response_error)\\b"
+					"match": "(?i)\\b(?<!_)(CAN_response_error)\\b"
 				},
 				{
 					"name": "variable.langauge.vclCAN.CANRO.vcl",
-					"match": "(?i)\\b(CANRO_ID|CANRO_length)\\b"
+					"match": "(?i)\\b(?<!_)(CANRO_ID|CANRO_length)\\b"
 				},
 				{
 					"name": "variable.language.digitalOut.vcl",
-					"match": "(?i)\\b(digout\\d\\d|digout\\d)\\b"
+					"match": "(?i)\\b(?<!_)(digout\\d\\d|digout\\d)\\b"
 				},
 				{
 					"name": "variable.language.potentiometer.vcl",
-					"match": "(?i)\\b(pot\\d\\d|pot\\d)(|_raw|_output)\\b"
+					"match": "(?i)\\b(?<!_)(pot\\d\\d|pot\\d)(|_raw|_output)\\b"
 				}
 
 				
