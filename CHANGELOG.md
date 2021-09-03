@@ -83,8 +83,13 @@ All notable changes to the "vcl-extension" extension will be documented in this 
 
 ## [1.1.7]
 
-* Added constants to hovers and suggestions.
+- Added constants to hovers and suggestions.
 
 ## [1.1.8]
 
-* Fixed issue where putting certain OS variables in a subroutine name (or otherwise using the variable) with an underscore preceeding the variable would cause the variable name to still be highlighted.
+- Fixed issue where putting certain OS variables in a subroutine name (or otherwise using the variable) with an underscore preceeding the variable would cause the variable name to still be highlighted.
+
+## [1.1.9]
+
+- Added Subroutine Header snippet. See README for the snippet prefix/output
+- Changed Subroutine Declaration icon in Outline for clarity

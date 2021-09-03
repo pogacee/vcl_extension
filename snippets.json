@@ -58,6 +58,10 @@
         "prefix": ["subr", "subroutine"],
         "body": ["${1:subroutineName}:", "\t$0", "return"]
     },
+    "Subroutine Header": {
+        "prefix": ["shead", "subrhead", "subroutinehead"],
+        "body": [";------------------------------------------------------------------------", ";\tSubroutine ${1:subroutineName}", ";------------------------------------------------------------------------", ";\t${2:description}", ";------------------------------------------------------------------------"]
+    },
     "Parameter Level": {
         "prefix": ["paraml", "paramlevel"],
         "body": [";PARAMETER_ENTRY\t\"${1:name}\"", ";\t\tTYPE\t\t\t${2:type}",";\t\tLEVEL\t\t\t${3:level}",";END","$0"],

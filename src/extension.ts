@@ -405,7 +405,7 @@ class VCLDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 
 						// Subroutine
 						else if (showSubroutines && /w*:/.test(tokens[j])) {
-							let subroutine_symbol = new vscode.DocumentSymbol(tokens[j], 'Subroutine', vscode.SymbolKind.Constructor, line.range, line.range);
+							let subroutine_symbol = new vscode.DocumentSymbol(tokens[j], 'Subroutine', vscode.SymbolKind.Class, line.range, line.range);
 							nodes[nodes.length - 1].push(subroutine_symbol);
 							if (!inside_subroutine) {
 								nodes.push(subroutine_symbol.children);

@@ -98,6 +98,11 @@ This extension contributes the following settings:
 
 * Fixed issue where putting certain OS variables in a subroutine name (or otherwise using the variable) with an underscore preceeding the variable would cause the variable name to still be highlighted.
 
+### 1.1.9
+
+* Added a subroutine header snippet. To use this snippet, type `shead`, `subrhead`, or `subroutinehead`.
+* Changed the subroutine declaration icon in the VS Code Outline to more clearly be able to distiguish between subroutine declarations and calls.
+
 ## VCL_Extension Snippets
 
 ### **Revision Line**
@@ -170,6 +175,20 @@ subr, subroutine
 subroutineName:
 
 return
+```
+### **Subroutine Header**
+#### *Prefix*
+```vcl
+shead, subrhead, subroutinehead
+```
+#### *Output*
+```vcl
+;------------------------------------------------------------------------
+;   Subroutine subroutineName
+;------------------------------------------------------------------------
+;   description
+;------------------------------------------------------------------------
+
 ```
 ### **While Loop**
 #### *Prefix*
